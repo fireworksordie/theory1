@@ -323,14 +323,19 @@ def convert(doc, where="song"):
             if not part["chords"] and not part["notes"]:
                 continue                   # an empty part (a melody-only section exported without its melody)
             bar = part["beats"] * 12 * 4 // part["unit"]
-            if "endTick" in k:             # the bars the page drew, empty ones too
+            spans = [(c["start"], c["start"] + c["len"]) for c in part["chords"]] + \
+                    [(n["start"], n["start"] + n["len"]) for n in part["notes"]]
+            first, last = min(a for a, _ in spans), max(b for _, b in spans)
+            if "endTick" in k:             # the bars the page drew, from the part's start
                 part["from"] = ticks_units(k0 * scale_t)
                 part["to"] = ticks_units(k["endTick"] * scale_t)
             else:
-                spans = [(c["start"], c["start"] + c["len"]) for c in part["chords"]] + \
-                        [(n["start"], n["start"] + n["len"]) for n in part["notes"]]
-                first, last = min(a for a, _ in spans), max(b for _, b in spans)
                 part["from"] = first - first % bar
+                part["to"] = 1 << 30
+            if ki + 1 == len(keys):        # the section's end: no bars left empty after what is written (TheoryTab
+                end = last + (-(last - part["from"]) % bar)   # sections often end in blank bars: silence, then on)
+                part["to"] = min(part["to"], end)
+            elif part["to"] >= 1 << 30:
                 part["to"] = last + (-(last - part["from"]) % bar)
             song["sections"].append(part)
     if not song["sections"]:
