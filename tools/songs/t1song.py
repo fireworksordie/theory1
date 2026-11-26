@@ -264,6 +264,29 @@ def ticks_units(t):
     return int(round(int(t) / UNIT))
 
 
+def merge_keys(keys):
+    """TheoryTab starts a new segment at a meter change too (one 2/4 bar in a 4/4 verse): only a change of key or
+    mode makes a part of its own. A merged run takes the meter that covers most of it."""
+    out = []
+    for k in sorted(keys, key=lambda k: k.get("startTick", 0)):
+        if out and (out[-1]["tonic"], out[-1]["scale"]) == (k.get("tonic"), k.get("scale")):
+            m = out[-1]
+            m["_runs"].append(k)
+            if "endTick" in k:
+                m["endTick"] = k["endTick"]
+            else:
+                m.pop("endTick", None)
+            continue
+        out.append(dict(k, _runs=[k]))
+    for m in out:
+        runs = m.pop("_runs")
+        def span(k):
+            return (k.get("endTick") or 0) - k.get("startTick", 0)
+        best = max(runs, key=span)
+        m["beats"], m["beatUnit"] = best.get("beats"), best.get("beatUnit")
+    return out
+
+
 def convert(doc, where="song"):
     """a song file's JSON -> the song as the bank holds it (a dict, for show and pack)"""
     if doc.get("format") != "theory1-hooktheory/1":
@@ -275,12 +298,13 @@ def convert(doc, where="song"):
     for sec in doc.get("sections") or []:
         keys = sec.get("keys") or [{"startTick": 0, "tonic": sec.get("key"), "scale": sec.get("scale"),
                                     "beats": sec.get("meter", 4), "beatUnit": 4}]
+        keys = merge_keys(keys)
         chords = sorted(sec.get("chords") or [], key=lambda c: c["startTick"])
         melody = sorted(sec.get("melody") or [], key=lambda n: n["startTick"])
         tokens = (sec.get("numerals") or "").split()
         real = [c for c in chords if not c.get("isRest")]
         use_tokens = len(tokens) == len(real)
-        ti = 0
+        ti, first_part = 0, len(song["sections"])
         for ki, k in enumerate(keys):     # a key change inside a section: a part of its own
             k0 = k.get("startTick", 0)
             k1 = keys[ki + 1]["startTick"] if ki + 1 < len(keys) else 1 << 30
@@ -338,6 +362,8 @@ def convert(doc, where="song"):
             elif part["to"] >= 1 << 30:
                 part["to"] = last + (-(last - part["from"]) % bar)
             song["sections"].append(part)
+        if len(song["sections"]) == first_part + 1 and len(keys) > 1:   # only one key's part had anything in it
+            song["sections"][-1]["name"] = fold_text(sec.get("name") or "Section", 24)
     if not song["sections"]:
         raise SongError(f"{where}: no chords or melody in any section")
     if len(song["sections"]) > 40:
