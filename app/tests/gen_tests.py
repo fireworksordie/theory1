@@ -105,9 +105,35 @@ def songs():
                       "wait 20", "tap PLAY", "wait 1500", "turn K2 -4", "wait 1500", "tap FX", "wait 600",
                       "tap PLAY", "wait 30", "expect songplaying 0", "tap ARP", "turn ALGO -1", "wait 20",
                       "tap PLAY", "wait 900", "songplay", "wait 900", "tap PLAY", "tap ARP", "tap FX", "turn K2 4",
-                      "turn K1 -6", "wait 30", "tap HOME", "wait 30"]
+                      # the map, the same chords elsewhere, ear training (in another key: the map gives no key)
+                      "tap ENV", "wait 20", "expect songview 1", "turn SELECT 1", "wait 20", "turn SELECT 1",
+                      "wait 20", "tap SEL", "wait 20", "expect songview 0", "tap SAVE", "wait 20",
+                      "expect songview 2", "turn SELECT 1", "wait 20", "tap HOME", "wait 20", "expect songview 0",
+                      "tap LFO", "wait 20", "expect songview 3", "turn SELECT 1", "wait 20", "tap SEL", "wait 20",
+                      "tap SEL", "wait 20", "earwrong", "tap SEL", "wait 20", "tap PLAY", "wait 20", "tap LFO",
+                      "wait 20", "expect songview 0", "turn K1 -6", "wait 20", "tap ENV", "wait 20", "tap HOME",
+                      "wait 20", "turn K3 1", "wait 20", "tap PLAY", "wait 300", "expect songcount 1", "tap PLAY",
+                      "turn K3 -1", "wait 20", "tap HOME", "wait 30"]
             L += ["tap HOME", "wait 30"]
-    L += ["song 1", "wait 30", "expect songkeys 3", "tap ARP", "tap PLAY", "wait 3500", "expect songplaying 2",
+    L += [  # the count-in: a bar of clicks (the first chord's shape shown), then the song; off, at once
+          "song 4", "wait 30", "tap PLAY", "wait 1500", "expect songcount 1", "expect songpre 1", "expect songch 0",
+          "wait 1100", "expect songcount 0", "expect songplaying 1", "tap PLAY", "turn K3 -1", "tap PLAY", "wait 30",
+          "expect songcount 0", "tap PLAY", "turn K3 1", "turn K3 1", "tap PLAY", "wait 4500", "expect songcount 1",
+          "tap PLAY", "turn K3 -1",
+          # the map: SEL goes to the part chosen
+          "tap ENV", "wait 20", "expect songview 1", "turn SELECT 1", "tap SEL", "wait 20", "expect songview 0",
+          "expect songsec 1", "tap ENV", "tap ENV", "expect songview 0",
+          # the same chords: the chorus's vi IV I V, in the verse (bar 3) and the chorus again (bar 5); one opened
+          "tap SAVE", "wait 20", "expect songview 2", "expect songfound 2", "tap SEL", "wait 20",
+          "expect songview 0", "expect songsec 0", "expect songch 2",
+          # the Fifties' I vi IV V: nowhere else
+          "song 3", "wait 30", "tap SAVE", "wait 20", "expect songfound 1", "tap HOME", "wait 20",
+          # ear training: right, wrong, counted; HOME back to the song
+          "song 4", "wait 30", "tap LFO", "wait 20", "expect earq 1", "earright", "tap SEL", "wait 20",
+          "expect earok 101", "tap SEL", "wait 20", "expect earq 2", "earwrong", "tap SEL", "wait 20",
+          "expect earok 102", "tap HOME", "wait 20", "expect songview 0", "expect screen 11", "tap HOME", "wait 30",
+          "song 1", "wait 30", "turn K3 -1", "expect songkeys 3",  # (no count-in below)
+          "tap ARP", "tap PLAY", "wait 3500", "expect songplaying 2",
           "songplay", "wait 800", "expect songplaying 1", "tap HOME", "wait 30", "expect songplaying 0",
           # a beat before each chord its shape shows; held as it comes, the song does not stop for it
           "song 1", "wait 30", "tap PLAY", "wait 1900", "expect songpre 0", "wait 400", "expect songpre 1",

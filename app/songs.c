@@ -195,7 +195,12 @@ static struct {
     struct { uint8_t note; uint16_t end_sec; uint32_t end; } vo[16];
     uint8_t voice[6], nvoice;                 /* the chord's hand shape (MIDI, low to high), for the keys */
     uint8_t last[6], nlast;
-} sg = {.cur = -1, .key = -1, .tempo = 100, .melody = 1, .loop = 1, .pre = -1, .passed = -1};
+    uint8_t count;                            /* the count-in: bars of clicks before PLAY (0 none) */
+    uint8_t cin_n;                            /* counting in: its clicks, from cin0 to t0 */
+    uint32_t cin0;
+    uint8_t view, vsel, hphase, cbeat;              /* SV_*: the song, its map, the same chords elsewhere, ear training */
+} sg = {.cur = -1, .key = -1, .tempo = 100, .melody = 1, .loop = 1, .pre = -1, .passed = -1, .count = 1};
+enum { SV_SONG, SV_MAP, SV_FIND, SV_EAR };
 
 static int sg_minor(void)
 {
@@ -368,20 +373,37 @@ static int sg_same(const char *a, const char *b)
             return 0;
     return !*a && !*b;
 }
-static const char *sg_mode_text(void)
+static const char *sg_mode_name(const char *mode)
 {
     int m;
-    if (sg_same(sg.mode, "minor") || sg_same(sg.mode, "aeolian"))
+    if (sg_same(mode, "minor") || sg_same(mode, "aeolian"))
         return SCALES[SC_NATMINOR].name[th_ui];
-    if (sg_same(sg.mode, "ionian"))
+    if (sg_same(mode, "ionian"))
         return SCALES[SC_MAJOR].name[th_ui];
     for (m = 0; m < SC_PENTA_MAJ; m++)
-        if (sg_same(sg.mode, SCALES[m].name[1]))
+        if (sg_same(mode, SCALES[m].name[1]))
             return SCALES[m].name[th_ui];
     for (m = 0; m < NMODES; m++)
-        if (sg_same(sg.mode, MODES[m].name[1]))
+        if (sg_same(mode, MODES[m].name[1]))
             return MODES[m].name[th_ui];
-    return sg.mode;
+    return mode;
+}
+static const char *sg_mode_text(void) { return sg_mode_name(sg.mode); }
+/* where a mode's tonic sits in its parent major scale (A minor: 9, in C): chords compared across songs, whatever
+ * their mode, as in that major */
+static int sg_mode_off(const char *m)
+{
+    if (m[0] == 'd')
+        return 2;                             /* dorian */
+    if (m[0] == 'p')
+        return 4;                             /* phrygian (dominant: the same notes but one) */
+    if (m[0] == 'l')
+        return m[1] == 'y' ? 5 : m[1] == 'o' ? 11 : 0;
+    if (m[0] == 'm' && m[1] == 'i' && m[2] == 'x')
+        return 7;
+    if ((m[0] == 'm' && m[1] == 'i') || m[0] == 'a' || m[0] == 'h' || (m[0] == 'm' && m[1] == 'e'))
+        return 9;                             /* minor, aeolian, harmonic and melodic minor */
+    return 0;
 }
 
 static void sg_letters(nt_t n, char *b)        /* chord symbols: letters, as on any chart (H in German) */
@@ -474,6 +496,7 @@ static void sg_shape(const sch_t *c)
 }
 
 /* -------------------------------------------------------------- sound --- */
+static int sg_counting(void) { return sg.playing && (int32_t)(plat_ms() - sg.t0) < 0; }
 static void sg_on(int note, int vel)
 {
     if (note < 0 || note > 127)
@@ -509,6 +532,8 @@ static void sg_release(int all, uint32_t u)
 }
 static void sg_stop(void)
 {
+    if (sg_counting())
+        play_stop();                          /* (the count-in's clicks still to come) */
     sg_release(1, 0);
     sg.playing = sg.waiting = 0;
     sg.pre = -1;
@@ -530,7 +555,10 @@ static void sg_sound(const sch_t *c, uint32_t end)
 /* the unit the song is at now */
 static uint32_t sg_unit(void)
 {
-    uint64_t ms = plat_ms() - sg.t0;
+    uint64_t ms;
+    if (sg_counting())
+        return sg.u0;
+    ms = plat_ms() - sg.t0;
     return sg.u0 + (uint32_t)(ms * sg.bpm * sg.tempo * UPB / 6000000u);
 }
 
@@ -549,6 +577,20 @@ static void sg_play(void)
     while (sg.next_nt < sg.nnt && (uint32_t)(sg.notes[sg.next_nt * 5] | sg.notes[sg.next_nt * 5 + 1] << 8) < sg.u0)
         sg.next_nt++;
     sg.playing = 1;
+    sg.cin_n = (uint8_t)(sg.count * sg.beats);
+    if (sg.cin_n) {                           /* the count-in: a bar or two of clicks, the first of each bar high */
+        uint32_t k, ub = UPB * 4u / sg.unit, rate = (uint32_t)sg.bpm * sg.tempo * UPB;
+        sg.cin0 = sg.t0;
+        for (k = 0; k < sg.cin_n; k++)
+            play_note(sg.cin0 + (uint32_t)((uint64_t)k * ub * 6000000u / rate), k % sg.beats ? 84 : 96, 40,
+                      k % sg.beats ? 70 : 110);
+        sg.t0 = sg.cin0 + (uint32_t)((uint64_t)sg.cin_n * ub * 6000000u / rate);
+    }
+}
+static int sg_count_beat(void)                /* counting in: the click it is at, 1 .. */
+{
+    uint32_t span = sg.t0 - sg.cin0;
+    return span ? (int)((plat_ms() - sg.cin0) * (uint64_t)sg.cin_n / span) + 1 : 0;
 }
 
 /* the section after this one as the song plays: the next, or (at the end) as the loop says; -1 the end */
@@ -574,8 +616,28 @@ static uint16_t sg_held(void)                 /* the notes held on the keys, as 
 static void sg_tick(void)
 {
     uint32_t u;
+    if (ui.screen == SCR_SONG && sg.view == SV_SONG && !sg.playing && (uint8_t)(plat_ms() / 3000u & 1u) != sg.hphase) {
+        sg.hphase = (uint8_t)(plat_ms() / 3000u & 1u);   /* the hint: the song's controls, then the others' */
+        ui.redraw = 1;
+    }
     if (!sg.playing)
         return;
+    if (sg_counting()) {                      /* counting in: the first chord's shape shown, to get ready */
+        if ((uint8_t)sg_count_beat() != sg.cbeat) {
+            sg.cbeat = (uint8_t)sg_count_beat();
+            ui.redraw = 1;
+        }
+        if (sg.pre < 0 && sg.next_ch < sg.nch) {
+            sch_t n;
+            sg_chord(sg.next_ch, &n);
+            if (n.n) {
+                sg.pre = sg.next_ch, sg.prec = n, sg.ready = 0;
+                sg_shape(&n);
+                ui.redraw = 1;
+            }
+        }
+        return;
+    }
     if (sg.waiting) {
         if ((sg.got & sg.want) != sg.want)
             return;
@@ -702,6 +764,526 @@ static void sg_step(int d)
     }
 }
 
+/* --------------------------------------------------------------- views --- */
+/* a section's head, read without opening it (the map, the search) */
+typedef struct {
+    char name[25], mode[24];
+    nt_t tonic;
+    uint8_t beats, unit;
+    uint16_t from, to, nch, nnt;
+} shead_t;
+static rd_t sg_head(rd_t r, shead_t *h)
+{
+    rd_str(&r, h->name, sizeof h->name);
+    h->tonic.letter = (int8_t)(rd_u8(&r) % 7u);
+    h->tonic.acc = (int8_t)rd_u8(&r);
+    if (h->tonic.acc < -2 || h->tonic.acc > 2)
+        h->tonic.acc = 0;
+    rd_str(&r, h->mode, sizeof h->mode);
+    rd_skip(&r, 2);
+    h->beats = (uint8_t)rd_u8(&r);
+    h->unit = (uint8_t)rd_u8(&r);
+    if (!h->beats || h->beats > 16u)
+        h->beats = 4;
+    if (h->unit != 2u && h->unit != 4u && h->unit != 8u && h->unit != 16u)
+        h->unit = 4;
+    h->from = (uint16_t)rd_u16(&r), h->to = (uint16_t)rd_u16(&r);
+    h->nch = (uint16_t)rd_u16(&r), h->nnt = (uint16_t)rd_u16(&r);
+    if (h->to <= h->from)
+        h->to = (uint16_t)(h->from + UPB * h->beats);
+    return r;
+}
+static uint32_t sg_bar_of(const shead_t *h) { return UPB * 4u * h->beats / h->unit; }
+
+/* a section's colour on the map, by what it is called: the same kind of part, the same colour */
+static int sg_pre(const char *a, const char *p)
+{
+    for (; *p; a++, p++)
+        if ((*a | 0x20) != *p)
+            return 0;
+    return 1;
+}
+static uint16_t sg_kind_col(const char *n)
+{
+    return sg_pre(n, "pre") ? RGB(190, 110, 255) : sg_pre(n, "chorus") || sg_pre(n, "refrain") ? RGB(255, 150, 40) :
+           sg_pre(n, "verse") ? RGB(70, 170, 255) : sg_pre(n, "bridge") ? RGB(80, 220, 120) :
+           sg_pre(n, "intro") || sg_pre(n, "outro") || sg_pre(n, "coda") ? RGB(130, 140, 160) :
+           sg_pre(n, "solo") || sg_pre(n, "instrumental") || sg_pre(n, "interlude") || sg_pre(n, "hook") ?
+           RGB(255, 225, 90) : RGB(80, 210, 200);
+}
+
+/* four rows of a list, each with its colour bar, the chosen one lit (the map's sections, the search's finds) */
+static void sg_rows(int n, int sel, int32_t y0, void (*row)(int i, char *a, char *b, uint16_t *col))
+{
+    int i, first = clamp(sel - 1, 0, n > 4 ? n - 4 : 0);
+    for (i = first; i < first + 4 && i < n; i++) {
+        int32_t y = y0 + (i - first) * 42;
+        char a[64], b[64];
+        uint16_t col;
+        row(i, a, b, &col);
+        if (i == sel)
+            cv_rect(4, y - 3, 232, 40, COL_SELBG);
+        cv_rect(8, y, 6, 34, col);
+        t1_fit(a, &FONT_B, 210);
+        t1_fit(b, &FONT_XS, 210);
+        t1_tx(22, y, &FONT_B, a, i == sel ? C_WHITE : C_GRAY);
+        t1_tx(22, y + 20, &FONT_XS, b, i == sel ? C_HI : C_DIM);
+    }
+    if (n > 4)
+        cv_rect(236, y0 + first * 164 / n, 3, 16, C_DIM);
+}
+
+/* the map: the song's parts as blocks, as long as they are; SEL goes to the one chosen */
+static void sg_map_row(int i, char *a, char *b, uint16_t *col)
+{
+    shead_t h;
+    rd_t r = {sg.secp[i], sg.end, 0};
+    char t[24];
+    uint32_t bars;
+    sg_head(r, &h);
+    t1_strcpy(a, h.name);
+    *col = sg_kind_col(h.name);
+    bars = (uint32_t)(h.to - h.from + sg_bar_of(&h) - 1u) / sg_bar_of(&h);
+    int_str(t, (int)bars);
+    t1_fmt(b, SG(bars == 1u ? SG_BAR1 : SG_BARS), t, 0, 0);
+    str_cat(b, "   ");
+    if (sg.key < 0) {                         /* (moved to another key: only the mode) */
+        note_full(h.tonic, t);
+        str_cat(b, t);
+        str_cat(b, " ");
+    }
+    str_cat(b, sg_mode_name(h.mode));
+}
+static void draw_map(void)
+{
+    uint32_t total = 0, len[SG_MAXSEC], s;
+    int32_t x = 8;
+    char t[64];
+    t1_upper(t, sg.title);
+    t1_fit(t, &FONT_B, 150);
+    ui_header(t, SG(SG_MAP), C_HI);
+    for (s = 0; s < sg.nsec; s++) {
+        shead_t h;
+        rd_t r = {sg.secp[s], sg.end, 0};
+        sg_head(r, &h);
+        len[s] = (uint32_t)(h.to - h.from) * 48u / sg_bar_of(&h);   /* (in bars, the meter's own) */
+        total += len[s] ? len[s] : 1u;
+    }
+    for (s = 0; s < sg.nsec && total; s++) {   /* the whole song in a strip */
+        shead_t h;
+        rd_t r = {sg.secp[s], sg.end, 0};
+        int32_t w;
+        uint32_t before = 0, k;
+        for (k = 0; k <= s; k++)
+            before += len[k] ? len[k] : 1u;
+        w = 8 + (int32_t)(before * 224u / total) - x;
+        sg_head(r, &h);
+        if (s == sg.vsel)
+            cv_rect(x, 28, w, 20, C_WHITE);
+        if (w > 2)
+            cv_rect(x + 1, 30, w - 2, 16, sg_kind_col(h.name));
+        if (s == sg.sec && w > 2)             /* where the song is: a mark under it */
+            cv_rect(x + 1, 50, w - 2, 3, C_WHITE);
+        x += w;
+    }
+    sg_rows(sg.nsec, sg.vsel, 58, sg_map_row);
+    hint(SG(SG_H_MAP));
+}
+
+/* the same chords elsewhere: from the chord shown, its next four (repeats counted once), searched for in every
+ * part of every song, in any key or mode (compared as in their parent major, sevenths and added notes left out) */
+#define SG_FMAX 40
+static struct {
+    uint8_t n, npat, pat[4];
+    uint16_t from;                            /* the chord searched from */
+    char label[64];
+    struct { uint8_t song, sec; uint16_t ch, bar; } at[SG_FMAX];
+} sgf;
+static uint8_t sg_sig(const uint8_t *tone, int n, int root, int off)
+{
+    uint16_t m = 0;
+    int k, q;
+    for (k = 0; k < n; k++)
+        m |= (uint16_t)(1u << ((tone[k] - root + 24) % 12));
+    q = m & 1u << 4 ? (m & 1u << 8 && !(m & 1u << 7) ? 2 : 0) :
+        m & 1u << 3 ? (m & 1u << 6 && !(m & 1u << 7) ? 3 : 1) : 4;
+    return (uint8_t)((root + off) % 12 | q << 4);
+}
+static void sg_find_in(int i)
+{
+    rd_t r = sg_song(i);
+    uint32_t s, n;
+    rd_skip(&r, rd_u8(&r));
+    rd_skip(&r, rd_u8(&r));
+    n = rd_u8(&r);
+    for (s = 0; s < n && s < SG_MAXSEC && !r.bad; s++) {
+        shead_t h;
+        uint32_t k, nw = 0, off;
+        uint8_t win[4] = {0};
+        uint16_t at[4] = {0}, st[4] = {0};
+        r = sg_head(r, &h);
+        off = (uint32_t)sg_mode_off(h.mode);
+        for (k = 0; k < h.nch && !r.bad; k++) {
+            uint32_t start = rd_u16(&r), root, fn, nt, j;
+            uint8_t tone[8];
+            uint8_t sig;
+            rd_skip(&r, 2);
+            root = rd_u8(&r) & 15u;
+            rd_skip(&r, 1);
+            fn = rd_u8(&r), nt = rd_u8(&r);
+            for (j = 0; j < nt; j++) {
+                uint32_t b = rd_u8(&r);
+                if (j < 8u)
+                    tone[j] = (uint8_t)(b % 12u);
+            }
+            rd_skip(&r, rd_u8(&r));
+            rd_skip(&r, rd_u8(&r));
+            if (fn == FN_REST || !nt) {
+                nw = 0;
+                continue;
+            }
+            sig = sg_sig(tone, nt > 8u ? 8 : (int)nt, (int)root, (int)off);
+            if (nw && win[nw - 1] == sig)
+                continue;
+            if (nw >= sgf.npat && nw) {
+                for (j = 1; j < nw; j++)
+                    win[j - 1] = win[j], at[j - 1] = at[j], st[j - 1] = st[j];
+                nw--;
+            }
+            if (nw >= 4u)
+                continue;
+            win[nw] = sig, at[nw] = (uint16_t)k, st[nw] = (uint16_t)start, nw++;
+            if (nw == sgf.npat && sgf.n < SG_FMAX) {
+                for (j = 0; j < nw && win[j] == sgf.pat[j]; j++)
+                    ;
+                if (j == nw && !(i == sg.cur && s == sg.sec && at[0] == sgf.from)) {
+                    sgf.at[sgf.n].song = (uint8_t)i, sgf.at[sgf.n].sec = (uint8_t)s, sgf.at[sgf.n].ch = at[0];
+                    sgf.at[sgf.n].bar = (uint16_t)((st[0] > h.from ? (uint32_t)(st[0] - h.from) : 0u) / sg_bar_of(&h) + 1u);
+                    sgf.n++;
+                }
+            }
+        }
+        rd_skip(&r, h.nnt * 5u);
+    }
+}
+static void sg_find(void)
+{
+    int i, k, off = sg_mode_off(sg.mode);
+    sgf.n = sgf.npat = 0;
+    sgf.label[0] = 0;
+    for (k = sg.ch; k < sg.nch && sgf.npat < 4; k++) {
+        sch_t c;
+        uint8_t sig;
+        sg_chord(k, &c);
+        if (!c.n) {
+            if (sgf.npat)
+                break;
+            continue;
+        }
+        sig = sg_sig(c.tone, c.n, c.root_semi, off);
+        if (sgf.npat && sgf.pat[sgf.npat - 1] == sig)
+            continue;
+        if (!sgf.npat)
+            sgf.from = (uint16_t)k;
+        sgf.pat[sgf.npat++] = sig;
+        if (sgf.label[0])
+            str_cat(sgf.label, "  ");
+        str_cat(sgf.label, c.num);
+    }
+    if (sgf.npat < 2)
+        return;
+    for (i = 0; i < sg_count(); i++)          /* other songs first, then this one's other places */
+        if (i != sg.cur)
+            sg_find_in(i);
+    sg_find_in(sg.cur);
+}
+static void sg_find_row(int i, char *a, char *b, uint16_t *col)
+{
+    rd_t r = sg_song(sgf.at[i].song);
+    char t[48], u[8];
+    uint32_t s;
+    rd_str(&r, a, 49);
+    rd_skip(&r, rd_u8(&r));
+    s = rd_u8(&r);
+    t[0] = 0;
+    *col = C_DIM;
+    if (sgf.at[i].sec < s) {                  /* the section's name: its head, after those before it */
+        uint32_t k;
+        for (k = 0; k <= sgf.at[i].sec && !r.bad; k++) {
+            shead_t h;
+            uint32_t j, nch;
+            r = sg_head(r, &h);
+            if (k == sgf.at[i].sec) {
+                t1_strcpy(t, h.name);
+                *col = sg_kind_col(h.name);
+                break;
+            }
+            nch = h.nch;
+            for (j = 0; j < nch && !r.bad; j++) {
+                rd_skip(&r, 7);
+                rd_skip(&r, rd_u8(&r));
+                rd_skip(&r, rd_u8(&r));
+                rd_skip(&r, rd_u8(&r));
+            }
+            rd_skip(&r, h.nnt * 5u);
+        }
+    }
+    int_str(u, sgf.at[i].bar);
+    t1_fmt(b, SG(SG_FIND_AT), t, u, 0);
+}
+static void draw_find(void)
+{
+    char t[64];
+    t1_strcpy(t, sgf.label);
+    ui_header(SG(SG_FIND), "", C_HI);
+    t1_fit(t, &FONT_B, 224);
+    t1_tx(8, 30, &FONT_B, t, COL_ROOT);
+    if (!sgf.n)
+        t1_tx(8, 62, &FONT_XS, SG(SG_FIND_NONE), C_GRAY);
+    else {
+        char a[8];
+        int_str(a, sgf.n);
+        text_r(232, 30, &FONT_XS, a, C_DIM);
+        sg_rows(sgf.n, sg.vsel, 58, sg_find_row);
+    }
+    hint(SG(SG_H_FIND));
+}
+
+/* ear training: the chord before heard, then the one that comes: which is it? four numerals to choose from */
+static struct {
+    int q;                                    /* the chord asked (its index in the section), -1 none */
+    char opt[4][24];
+    uint8_t nopt, right, done, asked, ok;     /* done: 0 asking, 1 right, 2 wrong */
+    uint32_t seed;
+} ear;
+static uint32_t ear_rand(uint32_t n)
+{
+    ear.seed = ear.seed * 1103515245u + 12345u;
+    return n ? (ear.seed >> 16) % n : 0;
+}
+static void ear_play(void)                    /* the chord before, two beats, then the one asked */
+{
+    sch_t c;
+    uint32_t t = plat_ms(), beat = 6000000u / ((uint32_t)sg.bpm * sg.tempo), k;
+    int i;
+    play_stop();
+    for (i = 0; i < 2; i++) {
+        int b;
+        if (ear.q < 0)
+            return;
+        if (!i) {
+            int p = ear.q - 1;
+            sg_chord(p, &c);
+            while (p > 0 && !c.n)
+                sg_chord(--p, &c);
+        } else
+            sg_chord(ear.q, &c);
+        if (!c.n)
+            continue;
+        sg_shape(&c);
+        for (k = 0; k < sg.nvoice; k++)
+            play_note(t + i * 2u * beat, sg.voice[k], 2u * beat - 40u, 62);
+        b = 40 + (c.bass_semi + pc_of(sg_tonic())) % 12;
+        play_note(t + i * 2u * beat, b < 43 ? b + 12 : b, 2u * beat - 40u, 74);
+    }
+}
+static int sg_eq(const char *a, const char *b)
+{
+    for (; *a && *a == *b; a++, b++)
+        ;
+    return *a == *b;
+}
+static int ear_has(const char *s)
+{
+    int i;
+    for (i = 0; i < ear.nopt; i++)
+        if (sg_eq(ear.opt[i], s))
+            return 1;
+    return 0;
+}
+static void ear_new(int from)                 /* the next question: the first chord from index from with one
+                                               * before it (in a part of its own, the next part's second) */
+{
+    static const char *const MAJ[6] = {"I", "IV", "V", "vi", "ii", "iii"}, *const MIN[6] = {"i", "iv", "v", "VI",
+                                                                                           "VII", "III"};
+    sch_t c;
+    int tries, k, n = 0;
+    char pool[16][24];
+    for (tries = 0; tries <= sg.nsec; tries++) {
+        for (k = from < 1 ? 1 : from; k < sg.nch; k++) {
+            sg_chord(k, &c);
+            if (c.n)
+                break;
+        }
+        if (k < sg.nch)
+            break;
+        sg_section(sg.sec + 1 < sg.nsec ? sg.sec + 1 : 0);
+        from = 1;
+    }
+    ear.done = 0, ear.nopt = 0;
+    sg.vsel = 0;
+    if (k >= sg.nch) {
+        ear.q = -1;
+        return;
+    }
+    ear.q = k;
+    sg.ch = k > 0 ? k - 1 : 0;
+    t1_strcpy(ear.opt[ear.nopt++], c.num);
+    for (k = 0; k < sg.nch && n < 16; k++) {  /* the wrong answers: this part's other numerals, else the key's */
+        sch_t o;
+        int j;
+        sg_chord(k, &o);
+        for (j = 0; j < n && !sg_eq(pool[j], o.num); j++)
+            ;
+        if (o.n && o.num[0] && j == n && !sg_eq(o.num, c.num))
+            t1_strcpy(pool[n++], o.num);
+    }
+    while (ear.nopt < 4 && n) {
+        k = (int)ear_rand((uint32_t)n);
+        t1_strcpy(ear.opt[ear.nopt++], pool[k]);
+        t1_strcpy(pool[k], pool[--n]);
+    }
+    for (k = 0; k < 6 && ear.nopt < 4; k++) {
+        const char *d = sg_minor() ? MIN[k] : MAJ[k];
+        if (!ear_has(d))
+            t1_strcpy(ear.opt[ear.nopt++], d);
+    }
+    k = (int)ear_rand(ear.nopt);              /* the right one somewhere among them */
+    {
+        char t[24];
+        t1_strcpy(t, ear.opt[0]);
+        t1_strcpy(ear.opt[0], ear.opt[k]);
+        t1_strcpy(ear.opt[k], t);
+    }
+    ear.right = (uint8_t)k;
+    ear_play();
+}
+static void ear_answer(void)
+{
+    char t[48], u[32];
+    sch_t c;
+    if (ear.q < 0)
+        return;
+    if (ear.done) {                           /* answered: the next one */
+        ear_new(ear.q + 1);
+        return;
+    }
+    sg_chord(ear.q, &c);
+    ear.asked++;
+    ear.done = sg.vsel == ear.right ? 1 : 2;
+    if (ear.done == 1)
+        ear.ok++;
+    sg.ch = ear.q;
+    sg_symbol(&c, u);
+    str_cat(u, " ");
+    str_cat(u, c.num);
+    t1_fmt(t, SG(ear.done == 1 ? SG_EAR_RIGHT : SG_EAR_WRONG), u, 0, 0);
+    app_say(SG(SG_EAR), t);
+    ear_play();
+}
+static void draw_ear(void)
+{
+    char t[64], u[32];
+    sch_t c;
+    int i;
+    {
+        char a[8], b[8];
+        int_str(a, ear.ok);
+        int_str(b, ear.asked);
+        t1_fmt(t, SG(SG_EAR_SCORE), a, b, 0);
+    }
+    ui_header(SG(SG_EAR), t, C_GRAY);
+    if (ear.q < 0) {
+        t1_tx(8, 40, &FONT_XS, SG(SG_MELODY_ONLY), C_GRAY);
+        hint(SG(SG_H_EAR));
+        return;
+    }
+    i = ear.q - 1;
+    sg_chord(i, &c);
+    while (i > 0 && !c.n)
+        sg_chord(--i, &c);
+    sg_symbol(&c, u);
+    str_cat(u, " ");
+    str_cat(u, c.num);
+    t1_fmt(t, SG(SG_EAR_Q), u, 0, 0);
+    t1_fit(t, &FONT_B, 224);
+    t1_tx(8, 30, &FONT_B, t, C_WHITE);
+    for (i = 0; i < ear.nopt; i++) {          /* the four, two by two */
+        int32_t x = 8 + (i & 1) * 116, y = 54 + (i >> 1) * 44;
+        uint16_t bg = ear.done && i == ear.right ? RGB(30, 110, 60) :
+                      ear.done == 2 && i == sg.vsel ? RGB(120, 35, 35) : COL_PANEL;
+        if (i == sg.vsel && !ear.done)
+            cv_rect(x - 2, y - 2, 112, 42, C_HI);
+        cv_rect(x, y, 108, 38, bg);
+        t1_strcpy(t, ear.opt[i]);
+        t1_fit(t, &FONT_B, 100);
+        if (t1_tw(&FONT_M, t) <= 100)
+            t1_tx(x + (108 - t1_tw(&FONT_M, t)) / 2, y + 8, &FONT_M, t, C_WHITE);
+        else
+            t1_tx(x + (108 - t1_tw(&FONT_B, t)) / 2, y + 11, &FONT_B, t, C_WHITE);
+    }
+    if (ear.done) {                           /* answered: the chord, what it does, on the keys */
+        sg_chord(ear.q, &c);
+        sg_symbol(&c, u);
+        str_cat(u, " ");
+        str_cat(u, c.num);
+        t1_fmt(t, SG(ear.done == 1 ? SG_EAR_RIGHT : SG_EAR_WRONG), u, 0, 0);
+        t1_fit(t, &FONT_B, 224);
+        t1_tx(8, 146, &FONT_B, t, ear.done == 1 ? COL_OK : COL_BAD);
+        t1_tx(8, 166, &FONT_XS, SG(SG_FN0 + c.fn), C_HI);
+        mk.scale = sg_mask(&c);
+        mk.root = (uint16_t)PCB((c.root_semi + pc_of(sg_tonic())) % 12);
+    }
+    hint(SG(SG_H_EAR));
+}
+
+/* a view opened from the song, or closed (HOME, or its button again) */
+static void sg_view(int v)
+{
+    if (sg.playing)
+        sg_stop();
+    play_stop();
+    if (v == sg.view)
+        v = SV_SONG;
+    sg.view = (uint8_t)v;
+    sg.vsel = 0;
+    if (v == SV_MAP)
+        sg.vsel = sg.sec;
+    else if (v == SV_FIND)
+        sg_find();
+    else if (v == SV_EAR) {
+        ear.asked = ear.ok = 0;
+        ear.seed = plat_ms() | 1u;
+        ear_new(sg.ch + 1);
+    }
+    if (v == SV_SONG) {
+        sch_t c;
+        sg.nlast = 0;
+        sg_chord(sg.ch, &c);
+        sg_shape(&c);
+    }
+    ui.redraw = 1;
+}
+static int sg_back(void)                      /* HOME in a view: back to the song */
+{
+    if (sg.view == SV_SONG)
+        return 0;
+    sg_view(sg.view);
+    return 1;
+}
+static int sg_no_kb(void) { return sg.view == SV_MAP || sg.view == SV_FIND; }
+static uint32_t sg_live(void)
+{
+    if (sg.view == SV_MAP)
+        return 1u << B_SEL | 1u << B_ENV;
+    if (sg.view == SV_FIND)
+        return (sgf.n ? 1u << B_SEL : 0u) | 1u << B_SAVE;
+    if (sg.view == SV_EAR)
+        return 1u << B_SEL | 1u << B_PLAY | 1u << B_LFO;
+    return 1u << B_SEL | 1u << B_PLAY | 1u << B_ARP | 1u << B_FX | 1u << B_EDIT | 1u << B_SEQ | 1u << B_ENV |
+           1u << B_LFO | 1u << B_SAVE;
+}
+
 /* ------------------------------------------------------------- screens --- */
 static const char *sg_name(int i)
 {
@@ -745,6 +1327,18 @@ static void draw_song(void)
     int i;
     int32_t x;
     nt_t tn = sg_tonic();
+    if (sg.view == SV_MAP) {
+        draw_map();
+        return;
+    }
+    if (sg.view == SV_FIND) {
+        draw_find();
+        return;
+    }
+    if (sg.view == SV_EAR) {
+        draw_ear();
+        return;
+    }
     t1_strcpy(t, sg.name);
     if (sg.nsec > 1) {
         str_cat(t, " ");
@@ -835,7 +1429,11 @@ static void draw_song(void)
         t1_fmt(t, SG(SG_READY), u, 0, 0);
         t1_tx(8, 158, &FONT_B, t, COL_ALT);
     }
-    hint(SG(sg.playing ? SG_H_PLAY : SG_H_SONG));
+    if (sg_counting()) {                      /* counting in: the beat */
+        int_str(t, (sg_count_beat() - 1) % sg.beats + 1);
+        text_r(232, 152, &FONT_M, t, C_WHITE);
+    }
+    hint(SG(sg.playing ? SG_H_PLAY : sg.hphase ? SG_H_SONG2 : SG_H_SONG));
     /* the keys: the hand shape, the chord's other notes */
     if (sg.playing && sg.pre >= 0 && !sg.waiting) {
         c = sg.prec;                          /* the keys: the chord coming, in the hint's colour */
@@ -897,6 +1495,25 @@ static void sg_key_turn(int d)
 }
 static void sg_encoder(int e, int d)
 {
+    if (sg.view != SV_SONG) {                 /* the views: SELECT chooses */
+        int n = sg.view == SV_MAP ? sg.nsec : sg.view == SV_FIND ? sgf.n : ear.done ? 0 : ear.nopt;
+        if (e == EN_SELECT && n) {
+            sg.vsel = (uint8_t)t1_wrap(sg.vsel + (d < 0 ? -1 : 1), n);
+            if (sg.view == SV_EAR)
+                app_say(SG(SG_EAR), ear.opt[sg.vsel]);
+        }
+        return;
+    }
+    if (e == EN_K3) {
+        sg.count = (uint8_t)clamp(sg.count + (d > 0 ? 1 : -1), 0, 2);
+        if (sg.count == 2) {
+            char t[24];
+            t1_fmt(t, SG(SG_BARS), "2", 0, 0);
+            app_say(SG(SG_SAY_COUNT), t);
+        } else
+            app_say(SG(SG_SAY_COUNT), sg.count ? SG(SG_BAR1) : S(S_OFF));
+        return;
+    }
     if (e == EN_SELECT)
         sg_step(d < 0 ? -1 : 1);
     else if (e == EN_ALGO && !sg.playing) {
@@ -906,7 +1523,7 @@ static void sg_encoder(int e, int d)
     } else if (e == EN_K2) {
         char t[8];
         sg.tempo = (uint8_t)clamp(sg.tempo + (d > 0 ? 5 : -5), 25, 100);
-        if (sg.playing) {                     /* the song goes on from where it is, at the new pace */
+        if (sg.playing && !sg_counting()) {   /* the song goes on from where it is, at the new pace */
             sg.u0 = sg.waiting ? sg.u0 : sg_unit();
             sg.t0 = plat_ms();
         }
@@ -915,8 +1532,38 @@ static void sg_encoder(int e, int d)
         app_say(SG(SG_SAY_TEMPO), t);
     }
 }
+/* SEL: the next chord, or the view's choice */
+static void sg_select(void)
+{
+    if (sg.view == SV_MAP) {
+        sg_section(sg.vsel);
+        sg_view(SV_MAP);                      /* (the view open again: closed) */
+    } else if (sg.view == SV_FIND) {
+        int i = sg.vsel;
+        if (i >= sgf.n || !sg_open(sgf.at[i].song))
+            return;
+        sg.sel = sgf.at[i].song;
+        sg_section(sgf.at[i].sec < sg.nsec ? sgf.at[i].sec : 0);
+        sg.ch = sgf.at[i].ch < sg.nch ? sgf.at[i].ch : 0;
+        sg_view(SV_FIND);
+    } else if (sg.view == SV_EAR)
+        ear_answer();
+    else
+        sg_step(1);
+}
 static void sg_button(int b)
 {
+    if (b == B_ENV || b == B_LFO || b == B_SAVE) {
+        sg_view(b == B_ENV ? SV_MAP : b == B_LFO ? SV_EAR : SV_FIND);
+        return;
+    }
+    if (sg.view == SV_EAR) {
+        if (b == B_PLAY)
+            ear_play();
+        return;
+    }
+    if (sg.view != SV_SONG)
+        return;
     if (b == B_PLAY) {
         if (sg.playing)
             sg_stop();

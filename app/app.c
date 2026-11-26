@@ -2421,8 +2421,10 @@ static void midi_in(void)
 static void ui_go(int screen)
 {
     int was = syn_is(ui.screen), now = syn_is(screen);
-    if (ui.screen == SCR_SONG && screen != SCR_SONG)
+    if (ui.screen == SCR_SONG && screen != SCR_SONG) {
         sg_stop();
+        sg.view = SV_SONG;
+    }
     ui.screen = (uint8_t)screen;
     ui.redraw = 1;
     play_stop();
@@ -2441,7 +2443,10 @@ static void ui_back(void)
     case SCR_QUIZ: case SCR_QEND: ui_go(SCR_QSETUP); break;
     case SCR_SETTINGS: settings_save(); ui_go(SCR_MENU); break;
     case SCR_SYNPAGE: syn.sel = syn.ch; ui_go(SCR_SYNLIST); break;
-    case SCR_SONG: ui_go(SCR_SONGS); break;
+    case SCR_SONG:
+        if (!sg_back())
+            ui_go(SCR_SONGS);
+        break;
     default: ui_go(SCR_MENU); break;
     }
 }
@@ -2456,7 +2461,7 @@ static void ui_enter(void)
               ui.menu == 3 ? SCR_LAB : ui.menu == 4 ? SCR_SYNLIST : SCR_SETTINGS);
         break;
     case SCR_SONGS: sg_open_sel(); break;
-    case SCR_SONG: sg_step(1); break;
+    case SCR_SONG: sg_select(); break;
     case SCR_SYNLIST:
         ui_go(SCR_SYNPAGE);
         syn_chapter(syn.sel);
@@ -2629,6 +2634,8 @@ static void ui_button(int b)
         return;
     }
     case B_SAVE:                              /* (nothing changed: nothing written) */
+        if (ui.screen == SCR_SONG)
+            break;                            /* (there: the same chords in other songs) */
         settings_save();
         app_say(S(set_dirty ? S_SAY_ERROR : S_SAY_SAVED), "");
         return;
@@ -2795,7 +2802,7 @@ static void draw_all(void)
     mk.scale = mk.root = mk.ok = mk.bad = mk.hint = 0;
     mk.nkeys = 0;
     no_kb = ui.screen == SCR_MENU || ui.screen == SCR_TOPICS || ui.screen == SCR_QSETUP || ui.screen == SCR_SETTINGS ||
-            ui.screen == SCR_SONGS || syn_is(ui.screen);
+            ui.screen == SCR_SONGS || (ui.screen == SCR_SONG && sg_no_kb()) || syn_is(ui.screen);
     btn_live = 1u << B_HOME | 1u << B_GLO | (FM1B_BLE_CENTRAL ? 1u << B_REC : 0u) | 1u << B_OCTDN | 1u << B_OCTUP;
     switch (ui.screen) {
     case SCR_MENU: draw_menu(); btn_live |= 1u << B_SEL; break;
@@ -2817,7 +2824,7 @@ static void draw_all(void)
     case SCR_SONGS: draw_songs(); btn_live |= sg_count() ? 1u << B_SEL : 0u; break;
     case SCR_SONG:
         draw_song();
-        btn_live |= 1u << B_SEL | 1u << B_PLAY | 1u << B_ARP | 1u << B_FX | 1u << B_EDIT | 1u << B_SEQ;
+        btn_live |= sg_live();
         break;
     default: break;
     }
@@ -2923,6 +2930,16 @@ int app_expect(const char *what, int *got)
         *got = sg.pre >= 0;
     else if (!strcmp(what, "songloop"))
         *got = sg.loop;
+    else if (!strcmp(what, "songview"))
+        *got = sg.view;
+    else if (!strcmp(what, "songfound"))
+        *got = sgf.n;
+    else if (!strcmp(what, "songcount"))
+        *got = sg_counting();
+    else if (!strcmp(what, "earq"))
+        *got = ear.q;
+    else if (!strcmp(what, "earok"))
+        *got = ear.ok * 100 + ear.asked;
     else if (!strcmp(what, "songkeys"))
         *got = mk.nkeys;
     else if (!strcmp(what, "topic"))
@@ -3108,6 +3125,14 @@ int app_host_cmd(const char *cmd, const char *a, const char *b, const char *c, c
     if (!strcmp(cmd, "songhold") || !strcmp(cmd, "songlift")) {   /* the hand shape shown: held down, or let go */
         for (i = 0; i < sg.nvoice; i++)
             note_in(sg.voice[i], cmd[4] == 'h' ? 100 : 0, cmd[4] == 'h', 0);
+        return 1;
+    }
+    if (!strcmp(cmd, "earright")) {           /* earright: the ear question's right answer chosen (earwrong: not) */
+        sg.vsel = ear.right;
+        return 1;
+    }
+    if (!strcmp(cmd, "earwrong")) {
+        sg.vsel = (uint8_t)((ear.right + 1) % (ear.nopt ? ear.nopt : 1));
         return 1;
     }
     if (!strcmp(cmd, "songplay")) {           /* songplay: the waited-for chord's notes, played */
