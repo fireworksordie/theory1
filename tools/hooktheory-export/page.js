@@ -56,7 +56,10 @@
   const pick = (o, keys) => Object.fromEntries(keys.filter(k => k in o).map(k => [k, o[k]]));
 
   /* the page draws a section only once it is on the screen: bring it there and wait for its data. Some sections
-   * have only a melody (an instrumental hook) or only chords: the page's data says which to wait for */
+   * have only a melody (an instrumental hook) or only chords: the page's data says which to wait for. A section the
+   * site itself has left empty (0% chords and 0% melody, e.g. "Instrumental" on Tiny Dancer) never gets any data:
+   * wait only long enough to be sure, then keep it as an empty section */
+  const isEmpty = m => !!m && m.pctChord === 0 && m.pctMelody === 0;
   function loaded(el, m) {
     const wantChords = !m || m.pctChord == null || m.pctChord > 0, wantNotes = !!(m && m.pctMelody > 0);
     let chords = 0, notes = 0;
@@ -64,10 +67,12 @@
       const p = staffProps(st);
       if (p) { chords += p.chordEntries.length; notes += p.noteEntries.length; }
     }
+    if (isEmpty(m)) return chords + notes > 0;
     return (wantChords ? chords > 0 : true) && (wantNotes ? notes > 0 : true) && chords + notes > 0;
   }
   async function bringIn(el, m) {
-    for (let i = 0; i < 100 && !loaded(el, m); i++) {      /* up to 20 s, nudging the page every 2 s */
+    const tries = isEmpty(m) ? 15 : 100;                  /* 3 s for an empty section, else up to 20 s */
+    for (let i = 0; i < tries && !loaded(el, m); i++) {   /* nudging the page every 2 s */
       if (i % 10 === 0) { el.scrollIntoView({ block: "start" }); window.dispatchEvent(new Event("scroll")); }
       await sleep(200);
     }
@@ -112,10 +117,18 @@
     if (!els.every(el => meta.sections.some(s => s.url === el.getAttribute("data-section-url"))))
       throw new Error("Reload this page (F5), then press Export again.");
     const y = window.scrollY, sections = [];
-    for (const el of els) {
+    for (const [i, el] of els.entries()) {
       const url = el.getAttribute("data-section-url");
       const m = meta.sections.find(s => s.url === url) || {};
+      progress("Reading " + (m.name || url) + " (" + (i + 1) + " of " + els.length + ")…");
       const data = await readSection(el, m);
+      if (!data.chords.length && !data.melody.length && isEmpty(m)) {
+        /* empty on the site too: keep its place in the song, with the numerals the site lists for it */
+        sections.push({ name: m.name || url, url, key: m.key, scale: m.scale, bpm: m.tempo, meter: m.meter,
+                        numerals: m.rel, empty: true, chords: [],
+                        ...(withMelody ? { melody: [] } : {}), keys: data.keys });
+        continue;
+      }
       if (!data.chords.length && !data.melody.length)
         throw new Error("The section \"" + (m.name || url) + "\" did not load. Scroll through the song once and try again.");
       if (!withMelody) delete data.melody;
@@ -134,6 +147,8 @@
       sections
     };
   }
+
+  const progress = text => window.postMessage({ t1: "progress", text }, location.origin);
 
   window.addEventListener("message", async ev => {
     if (ev.source !== window || !ev.data || ev.data.t1 !== "export") return;

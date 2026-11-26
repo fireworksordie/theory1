@@ -9,6 +9,8 @@ The file keeps, for every section (Verse, Chorus, …):
 - every chord as a scale degree with its type, inversion, added notes, suspensions, secondary (applied) and
   borrowed chords, and where it starts and how long it lasts (480 ticks to a beat)
 - the melody, if **melody** is ticked: each note as a scale degree, octave, start and length
+- a section that is empty on TheoryTab itself (0% chords and melody, like *Instrumental* on Tiny Dancer) is
+  kept in its place with `"empty": true`, no chords, and the numerals the site lists for it
 - the numerals as TheoryTab writes them (`i7 III VIIsus4 iv7sus4`), the song's title, artist and page address
 
 ## Install
@@ -35,7 +37,8 @@ can instead run it unsigned with `xpinstall.signatures.required` set to `false` 
 
 1. Open a song on TheoryTab, such as `https://www.hooktheory.com/theorytab/view/<artist>/<song>`.
 2. Press **Export to THEORY-1** at the bottom right. It switches the page to *All Sections*, scrolls through them
-   so each one loads, and saves the file. This takes a few seconds.
+   so each one loads, and saves the file. This takes a few seconds; the message under the button names the
+   section it is reading.
 3. Put the file in `songs/personal/` in your copy of this repository.
 
 ## Your songs stay yours

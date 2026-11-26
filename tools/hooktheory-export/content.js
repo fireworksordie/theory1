@@ -37,10 +37,14 @@
 
   window.addEventListener("message", ev => {
     if (ev.source !== window || !ev.data || !ev.data.t1) return;
-    if (ev.data.t1 === "result") {
+    if (ev.data.t1 === "progress") {
+      say(ev.data.text);
+    } else if (ev.data.t1 === "result") {
       const song = ev.data.song, n = song.sections.length;
+      const empty = song.sections.filter(s => s.empty).map(s => s.name);
       save(song);
-      say("Saved " + n + (n === 1 ? " section" : " sections") + ".");
+      say("Saved " + n + (n === 1 ? " section" : " sections") + "." +
+          (empty.length ? " Empty on TheoryTab, kept with no chords: " + empty.join(", ") + "." : ""));
       go.disabled = false;
     } else if (ev.data.t1 === "error") {
       say(ev.data.message, true);
