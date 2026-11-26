@@ -89,8 +89,13 @@ def main(argv=None, backend=None, out=sys.stdout):
         return 2
     if a.check:
         return 0
-    import fm1_backup as B
-    import fm1_install as I
+    try:
+        import fm1_backup as B
+        import fm1_install as I
+    except ImportError:
+        print("error: the FM-1 tools are missing (base/tools/fm1_backup.py): base is a git submodule, fetch it with\n"
+              "  git submodule update --init --recursive", file=sys.stderr)
+        return 2
     B.DELAY["first"] = max(B.DELAY["first"], 15.0)   # (the FM-1 erases its song area before its first request)
     try:
         if backend is None:
