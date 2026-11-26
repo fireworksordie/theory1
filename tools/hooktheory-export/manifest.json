@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "THEORY-1 song export",
+  "version": "0.1.0",
+  "description": "Saves the TheoryTab song you are looking at as a THEORY-1 song file, for your own FM-1.",
+  "browser_specific_settings": {
+    "gecko": { "id": "theory1-song-export@fireworksordie.github.io", "strict_min_version": "109.0" }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.hooktheory.com/theorytab/view/*", "https://hooktheory.com/theorytab/view/*"],
+      "js": ["content.js"],
+      "css": ["export.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": ["page.js"]
+}
