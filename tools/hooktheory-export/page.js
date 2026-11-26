@@ -55,12 +55,19 @@
   }
   const pick = (o, keys) => Object.fromEntries(keys.filter(k => k in o).map(k => [k, o[k]]));
 
-  /* the page draws a section only once it is on the screen: bring it there, and wait until its chords are in */
-  function loaded(el) {
-    return [...el.querySelectorAll("[data-chord-staff]")].some(st => { const p = staffProps(st); return p && p.chordEntries.length; });
+  /* the page draws a section only once it is on the screen: bring it there and wait for its data. Some sections
+   * have only a melody (an instrumental hook) or only chords: the page's data says which to wait for */
+  function loaded(el, m) {
+    const wantChords = !m || m.pctChord == null || m.pctChord > 0, wantNotes = !!(m && m.pctMelody > 0);
+    let chords = 0, notes = 0;
+    for (const st of el.querySelectorAll("[data-chord-staff]")) {
+      const p = staffProps(st);
+      if (p) { chords += p.chordEntries.length; notes += p.noteEntries.length; }
+    }
+    return (wantChords ? chords > 0 : true) && (wantNotes ? notes > 0 : true) && chords + notes > 0;
   }
-  async function bringIn(el) {
-    for (let i = 0; i < 100 && !loaded(el); i++) {         /* up to 20 s, nudging the page every 2 s */
+  async function bringIn(el, m) {
+    for (let i = 0; i < 100 && !loaded(el, m); i++) {      /* up to 20 s, nudging the page every 2 s */
       if (i % 10 === 0) { el.scrollIntoView({ block: "start" }); window.dispatchEvent(new Event("scroll")); }
       await sleep(200);
     }
@@ -72,8 +79,8 @@
     if (tab && !tab.classList.contains("active")) { tab.click(); await sleep(800); }
   }
 
-  async function readSection(el) {
-    await bringIn(el);
+  async function readSection(el, m) {
+    await bringIn(el, m);
     const chords = new Map(), notes = new Map(), segs = new Map();
     for (const st of el.querySelectorAll("[data-chord-staff]")) {
       const p = staffProps(st);
@@ -108,8 +115,9 @@
     for (const el of els) {
       const url = el.getAttribute("data-section-url");
       const m = meta.sections.find(s => s.url === url) || {};
-      const data = await readSection(el);
-      if (!data.chords.length) throw new Error("The section \"" + (m.name || url) + "\" did not load. Scroll through the song once and try again.");
+      const data = await readSection(el, m);
+      if (!data.chords.length && !data.melody.length)
+        throw new Error("The section \"" + (m.name || url) + "\" did not load. Scroll through the song once and try again.");
       if (!withMelody) delete data.melody;
       sections.push(Object.assign({ name: m.name || url, url, key: m.key, scale: m.scale, bpm: m.tempo,
                                     meter: m.meter, numerals: m.rel }, data));
