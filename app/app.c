@@ -180,9 +180,10 @@ static void play_interval(int b, int semis, int together)
 enum { SCR_MENU, SCR_TOPICS, SCR_LESSON, SCR_QSETUP, SCR_QUIZ, SCR_QEND, SCR_LAB, SCR_SETTINGS, SCR_SYNLIST,
        SCR_SYNPAGE, SCR_SONGS, SCR_SONG };
 #define NMENU 6                              /* LESSONS, SONGS, QUIZ, LAB, SYNTH, SETTINGS */
-enum { T_BASICS, T_STAFF, T_INTERVALS, T_SCALES, T_MODES, T_CHORDS, T_HARMONY, T_KEYS, T_WORLD, NTOPICS };
+enum { T_BASICS, T_STAFF, T_INTERVALS, T_SCALES, T_MODES, T_CHORDS, T_HARMONY, T_KEYS, T_WORLD, T_NUMERALS, NTOPICS };
+#define NNUM 13                              /* numerals.c's pages */
 static const uint8_t TOPIC_ITEMS[NTOPICS] = {NBASICS, STAFF_HI - STAFF_LO + 1, NINTERVALS, NBASESCALES, NMODES, NCHORDS, 9,
-                                             NKEYSIG, NWORLD};
+                                             NKEYSIG, NWORLD, NNUM};
 
 /* the scales of the Harmony lesson: four scales and the five modes that are not one of them */
 #define NHSCALES 9
@@ -986,6 +987,9 @@ static void draw_scale_like(const scale_t *s, nt_t root, const char *title, int 
     mk.root = (uint16_t)PCB(pc_of(root));
 }
 
+static void nm_draw(const char *r);
+static void nm_play(void);
+static void nm_open(void);
 static void draw_lesson(void)
 {
     char t[96], r[48], u[96], v[32];
@@ -1189,6 +1193,7 @@ static void draw_lesson(void)
         hint(S(ui.hseventh ? S_H_HARMONY4 : S_H_HARMONY3));
         break;
     }
+    case T_NUMERALS: nm_draw(r); break;
     case T_KEYS: {
         const keysig_t *k = &KEYSIGS[it];
         static const nt_t POS_ROOT[12] = {{0, 0}, {4, 0}, {1, 0}, {5, 0}, {2, 0}, {6, 0}, {3, 1}, {1, -1}, {5, -1},
@@ -2342,6 +2347,7 @@ static void lesson_play(void)
         break;
     }
     case T_KEYS: play_scale(&SCALES[SC_MAJOR], KEYSIGS[it].root, 0); break;
+    case T_NUMERALS: nm_play(); break;
     default: break;
     }
 }
@@ -2368,6 +2374,7 @@ static void ui_go(int screen);
 static void names_next(void);
 static int t1_wrap(int v, int n);
 #include "songs.c"
+#include "numerals.c"
 
 static void note_in(int note, int vel, int on, int outside)
 {
@@ -2648,6 +2655,8 @@ static void ui_button(int b)
             lesson_play();
         else if (b == B_ARP && ui.topic == T_HARMONY)
             harmony_all();
+        else if (b == B_ARP && ui.topic == T_NUMERALS)
+            nm_open();
         else if (b == B_EDIT)
             names_next();
         break;
@@ -2809,7 +2818,8 @@ static void draw_all(void)
     case SCR_TOPICS: draw_topics(); btn_live |= 1u << B_SEL; break;
     case SCR_LESSON:
         draw_lesson();
-        btn_live |= 1u << B_PLAY | 1u << B_EDIT | (ui.topic == T_HARMONY ? 1u << B_ARP : 0u);
+        btn_live |= 1u << B_PLAY | 1u << B_EDIT |
+                    (ui.topic == T_HARMONY || (ui.topic == T_NUMERALS && sgf.n) ? 1u << B_ARP : 0u);
         break;
     case SCR_QSETUP: draw_qsetup(); btn_live |= 1u << B_SEL; break;
     case SCR_QUIZ:

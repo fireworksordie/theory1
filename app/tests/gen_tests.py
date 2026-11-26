@@ -6,7 +6,8 @@ the screen). Run it after adding a topic, a quiz type, a clef or a language:  py
 from pathlib import Path
 
 NQT, NLANGS = 12, 5
-TOPIC_ITEMS = [9, 17, 13, 9, 21, 13, 9, 15, 13]   # basics, staff, intervals, scales, modes, chords, harmony, keys, world
+TOPIC_ITEMS = [9, 17, 13, 9, 21, 13, 9, 15, 13, 13]   # basics, staff, intervals, scales, modes, chords, harmony,
+#                                                       keys, world, numerals
 HERE = Path(__file__).resolve().parent
 
 
@@ -65,8 +66,10 @@ def texts_fit():
                 else:
                     for i in range(n):
                         L += ["turn SELECT 1", "wait 20"]
-                        if t in (2, 3, 4, 5):
+                        if t in (2, 3, 4, 5, 9):
                             L += ["turn K1 5", "wait 20"]
+                        if t == 9:              # the numerals: the progression heard, its chords lit
+                            L += ["tap PLAY", "wait 700"]
                         if t == 6:
                             for r in range(17):
                                 L += ["turn K1 1", "turn K2 1", "wait 20", "turn K3 1", "wait 20", "turn K3 1"]
@@ -105,6 +108,9 @@ def songs():
                       "wait 20", "tap PLAY", "wait 1500", "turn K2 -4", "wait 1500", "tap FX", "wait 600",
                       "tap PLAY", "wait 30", "expect songplaying 0", "tap ARP", "turn ALGO -1", "wait 20",
                       "tap PLAY", "wait 900", "songplay", "wait 900", "tap PLAY", "tap ARP", "tap FX", "turn K2 4",
+                      # ARP's "ask me": asked, a hint, then off
+                      "tap PLAY", "wait 1500", "tap SEL", "wait 300", "tap SEL", "wait 300", "turn K4 -1", "wait 900",
+                      "turn K4 1", "tap PLAY", "tap ARP", "wait 20",
                       # the map, the same chords elsewhere, ear training (in another key: the map gives no key)
                       "tap ENV", "wait 20", "expect songview 1", "turn SELECT 1", "wait 20", "turn SELECT 1",
                       "wait 20", "tap SEL", "wait 20", "expect songview 0", "tap SAVE", "wait 20",
@@ -132,12 +138,20 @@ def songs():
           "song 4", "wait 30", "tap LFO", "wait 20", "expect earq 1", "earright", "tap SEL", "wait 20",
           "expect earok 101", "tap SEL", "wait 20", "expect earq 2", "earwrong", "tap SEL", "wait 20",
           "expect earok 102", "tap HOME", "wait 20", "expect songview 0", "expect screen 11", "tap HOME", "wait 30",
-          "song 1", "wait 30", "turn K3 -1", "expect songkeys 3",  # (no count-in below)
+          # ARP twice: asked for each chord, no keys lit; SEL: one more hint (the shape: its keys lit); a wrong note
+          "song 1", "wait 30", "turn K3 -1", "tap ARP", "tap ARP", "tap PLAY", "wait 3500", "expect songplaying 2",
+          "expect songkeys 0", "tap SEL", "tap SEL", "tap SEL", "wait 30", "expect songkeys 3", "songplay", "wait 800",
+          "expect songplaying 1", "turn K4 -1", "wait 30", "turn K4 1", "tap PLAY", "tap ARP", "wait 30",
+          # Roman numerals (a lesson): the four chords found in a song; ARP opens it there
+          "tap HOME", "wait 30", "tap HOME", "wait 30", "turn SELECT -1", "tap SEL", "wait 30", "turn SELECT -1",
+          "tap SEL", "wait 30", "turn SELECT 8", "wait 30", "expect topic 9", "tap ARP", "wait 30", "expect screen 11",
+          "tap HOME", "wait 30", "tap HOME", "wait 30", "tap HOME", "wait 30",
+          "song 1", "wait 30", "expect songkeys 3",  # (no count-in below)
           "tap ARP", "tap PLAY", "wait 3500", "expect songplaying 2",
           "songplay", "wait 800", "expect songplaying 1", "tap HOME", "wait 30", "expect songplaying 0",
           # a beat before each chord its shape shows; held as it comes, the song does not stop for it
           "song 1", "wait 30", "tap PLAY", "wait 1900", "expect songpre 0", "wait 400", "expect songpre 1",
-          "songhold", "wait 800", "expect songch 1", "expect songplaying 1", "songlift", "tap PLAY", "tap ARP", "wait 30",
+          "songhold", "wait 800", "expect songch 1", "expect songplaying 1", "songlift", "tap PLAY", "tap ARP", "tap ARP", "wait 30",
           # the loop: the song again in time at its end (the Andalusian cadence: 8 bars at 84), the section, none
           "expect songloop 1", "song 1", "wait 30", "tap PLAY", "wait 23500", "expect songplaying 1", "expect songsec 0",
           "expect songch 0", "tap PLAY", "tap SEQ", "expect songloop 2", "tap SEQ", "expect songloop 0", "tap PLAY",

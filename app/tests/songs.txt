@@ -102,6 +102,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -233,6 +245,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -364,6 +388,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -495,6 +531,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -626,6 +674,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -757,6 +817,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -888,6 +960,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -1019,6 +1103,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -1155,6 +1251,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -1286,6 +1394,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -1417,6 +1537,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -1548,6 +1680,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -1679,6 +1823,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -1810,6 +1966,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -1941,6 +2109,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -2072,6 +2252,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -2208,6 +2400,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -2339,6 +2543,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -2470,6 +2686,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -2601,6 +2829,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -2732,6 +2972,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -2863,6 +3115,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -2994,6 +3258,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -3125,6 +3401,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -3261,6 +3549,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -3392,6 +3692,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -3523,6 +3835,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -3654,6 +3978,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -3785,6 +4121,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -3916,6 +4264,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -4047,6 +4407,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -4178,6 +4550,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -4314,6 +4698,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -4445,6 +4841,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -4576,6 +4984,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -4707,6 +5127,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -4838,6 +5270,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -4969,6 +5413,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -5100,6 +5556,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -5231,6 +5699,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -5367,6 +5847,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -5498,6 +5990,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -5629,6 +6133,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -5760,6 +6276,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -5891,6 +6419,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -6022,6 +6562,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -6153,6 +6705,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -6284,6 +6848,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -6420,6 +6996,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -6551,6 +7139,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -6682,6 +7282,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -6813,6 +7425,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -6944,6 +7568,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -7075,6 +7711,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -7206,6 +7854,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -7337,6 +7997,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -7473,6 +8145,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -7604,6 +8288,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -7735,6 +8431,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -7866,6 +8574,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -7997,6 +8717,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -8128,6 +8860,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -8259,6 +9003,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -8390,6 +9146,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -8526,6 +9294,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -8657,6 +9437,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -8788,6 +9580,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -8919,6 +9723,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -9050,6 +9866,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -9181,6 +10009,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -9312,6 +10152,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -9443,6 +10295,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -9579,6 +10443,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -9710,6 +10586,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -9841,6 +10729,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -9972,6 +10872,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -10103,6 +11015,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -10234,6 +11158,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -10365,6 +11301,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -10496,6 +11444,18 @@ tap PLAY
 tap ARP
 tap FX
 turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
 tap ENV
 wait 20
 expect songview 1
@@ -10624,6 +11584,50 @@ wait 30
 song 1
 wait 30
 turn K3 -1
+tap ARP
+tap ARP
+tap PLAY
+wait 3500
+expect songplaying 2
+expect songkeys 0
+tap SEL
+tap SEL
+tap SEL
+wait 30
+expect songkeys 3
+songplay
+wait 800
+expect songplaying 1
+turn K4 -1
+wait 30
+turn K4 1
+tap PLAY
+tap ARP
+wait 30
+tap HOME
+wait 30
+tap HOME
+wait 30
+turn SELECT -1
+tap SEL
+wait 30
+turn SELECT -1
+tap SEL
+wait 30
+turn SELECT 8
+wait 30
+expect topic 9
+tap ARP
+wait 30
+expect screen 11
+tap HOME
+wait 30
+tap HOME
+wait 30
+tap HOME
+wait 30
+song 1
+wait 30
 expect songkeys 3
 tap ARP
 tap PLAY
@@ -10648,6 +11652,7 @@ expect songch 1
 expect songplaying 1
 songlift
 tap PLAY
+tap ARP
 tap ARP
 wait 30
 expect songloop 1
