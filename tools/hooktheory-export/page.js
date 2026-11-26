@@ -55,6 +55,38 @@
   }
   const pick = (o, keys) => Object.fromEntries(keys.filter(k => k in o).map(k => [k, o[k]]));
 
+  /* A staff's props hold only the chords and notes it is drawing (a window of the section, when the section is
+   * long); the whole section is in the page's store (jotai): its list of chord atoms and of note atoms, kept in a
+   * hook of an ancestor of the staff. Found by what they hold: the nearest list of {chordAtom} and of {noteAtom}
+   * walking up from the staff (so never another section's), each atom read for its value now. */
+  const isAtom = v => v && typeof v === "object" && typeof v.read === "function";
+  function storeLists(st) {
+    let store = null;
+    for (let f = fiberOf(st), d = 0; f && d < 60 && !store; d++, f = f.return)
+      if (f.memoizedProps && f.memoizedProps.store && typeof f.memoizedProps.store.get === "function")
+        store = f.memoizedProps.store;
+    if (!store) return null;
+    const best = { chordAtom: null, noteAtom: null };
+    const look = v => {
+      if (!isAtom(v)) return;
+      let r;
+      try { r = store.get(v); } catch (e) { return; }
+      if (!Array.isArray(r) || !r.length || !r[0] || typeof r[0] !== "object") return;
+      for (const k of ["chordAtom", "noteAtom"])
+        if (isAtom(r[0][k]) && !best[k]) best[k] = r;
+    };
+    for (let f = fiberOf(st), d = 0; f && d < 60; d++, f = f.return) {
+      for (let h = f.memoizedState, i = 0; h && typeof h === "object" && i < 80; h = h.next, i++) {
+        const v = h.memoizedState;
+        look(v);
+        if (v && typeof v === "object" && !isAtom(v)) for (const k of Object.keys(v).slice(0, 12)) look(v[k]);
+      }
+    }
+    const val = (list, k) => (list || []).map(e => { try { return store.get(e[k]); } catch (x) { return e[k].init; } })
+                                       .filter(Boolean);
+    return { chords: val(best.chordAtom, "chordAtom"), notes: val(best.noteAtom, "noteAtom") };
+  }
+
   /* the page draws a section only once it is on the screen: bring it there and wait for its data. Some sections
    * have only a melody (an instrumental hook) or only chords: the page's data says which to wait for. A section the
    * site itself has left empty (0% chords and 0% melody, e.g. "Instrumental" on Tiny Dancer) never gets any data:
@@ -87,17 +119,23 @@
   async function readSection(el, m) {
     await bringIn(el, m);
     const chords = new Map(), notes = new Map(), segs = new Map();
+    const CH = ["root", "startTick", "durationTicks", "type", "inversion", "applied", "adds", "omits", "alterations",
+                "suspensions", "borrowed", "pedal", "isRest"], NT = ["sd", "octave", "startTick", "durationTicks", "isRest", "voice"];
+    const first = el.querySelector("[data-chord-staff]"), all = first && storeLists(first);
+    if (all) {
+      for (const c of all.chords) chords.set(c.id, pick(c, CH));
+      for (const n of all.notes) notes.set(n.id, pick(n, NT));
+    }
     for (const st of el.querySelectorAll("[data-chord-staff]")) {
       const p = staffProps(st);
       if (!p) continue;
       for (const e of p.chordEntries) {
         const c = e.chordAtom && e.chordAtom.init;
-        if (c) chords.set(c.id, pick(c, ["root", "startTick", "durationTicks", "type", "inversion", "applied", "adds",
-          "omits", "alterations", "suspensions", "borrowed", "pedal", "isRest"]));
+        if (c && !chords.has(c.id)) chords.set(c.id, pick(c, CH));
       }
       for (const e of p.noteEntries) {
         const n = e.noteAtom && e.noteAtom.init;
-        if (n) notes.set(n.id, pick(n, ["sd", "octave", "startTick", "durationTicks", "isRest", "voice"]));
+        if (n && !notes.has(n.id)) notes.set(n.id, pick(n, NT));
       }
       for (const g of p.line.segments || [])
         segs.set(g.startTick, { startTick: g.startTick, endTick: g.endTick, tonic: g.tonic, scale: g.scaleName,
