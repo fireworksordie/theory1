@@ -4,3 +4,9 @@ build/
 shots/
 *.pyc
 __pycache__/
+
+# personal songs exported from TheoryTab (tools/hooktheory-export): never committed
+songs/personal/
+*.t1song.json
+!songs/builtin/*.t1song.json
+!app/tests/songs/*.t1song.json

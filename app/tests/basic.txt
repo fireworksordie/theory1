@@ -3,7 +3,7 @@
 wait 900
 expect screen 0
 clefs 2
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 50
 expect screen 3

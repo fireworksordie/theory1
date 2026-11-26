@@ -1,0 +1,11676 @@
+# SONGS (app/tests/gen_tests.py): a bank loaded as over USB, every song walked, played and waited on, in
+# every language and two ways of naming notes; no text may run off the screen.
+wait 900
+expect songs 7
+expect mysongs 0
+songload app/build/test/songs.bin
+expect mysongs 1
+expect songs 8
+turn SELECT 1
+tap SEL
+wait 30
+expect screen 10
+tap SEL
+wait 30
+expect screen 11
+tap HOME
+wait 30
+expect screen 10
+tap HOME
+wait 30
+expect screen 0
+lang 0
+names 0
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 0
+names 3
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 1
+names 0
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 1
+names 3
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 2
+names 0
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 2
+names 3
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 3
+names 0
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 3
+names 3
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 4
+names 0
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+lang 4
+names 3
+wait 30
+song 0
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 1
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 2
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 3
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 4
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 5
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 6
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+song 7
+wait 30
+expect screen 11
+expect songsec 0
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+turn ALGO 1
+wait 20
+turn K1 1
+wait 20
+turn K1 5
+wait 20
+turn SELECT -3
+wait 20
+tap PLAY
+wait 1500
+turn K2 -4
+wait 1500
+tap FX
+wait 600
+tap PLAY
+wait 30
+expect songplaying 0
+tap ARP
+turn ALGO -1
+wait 20
+tap PLAY
+wait 900
+songplay
+wait 900
+tap PLAY
+tap ARP
+tap FX
+turn K2 4
+tap PLAY
+wait 1500
+tap SEL
+wait 300
+tap SEL
+wait 300
+turn K4 -1
+wait 900
+turn K4 1
+tap PLAY
+tap ARP
+wait 20
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+wait 20
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+turn SELECT 1
+wait 20
+tap HOME
+wait 20
+expect songview 0
+tap LFO
+wait 20
+expect songview 3
+turn SELECT 1
+wait 20
+tap SEL
+wait 20
+tap SEL
+wait 20
+earwrong
+tap SEL
+wait 20
+tap PLAY
+wait 20
+tap LFO
+wait 20
+expect songview 0
+turn K1 -6
+wait 20
+tap ENV
+wait 20
+tap HOME
+wait 20
+turn K3 1
+wait 20
+tap PLAY
+wait 300
+expect songcount 1
+tap PLAY
+turn K3 -1
+wait 20
+tap HOME
+wait 30
+tap HOME
+wait 30
+song 4
+wait 30
+tap PLAY
+wait 1500
+expect songcount 1
+expect songpre 1
+expect songch 0
+wait 1100
+expect songcount 0
+expect songplaying 1
+tap PLAY
+turn K3 -1
+tap PLAY
+wait 30
+expect songcount 0
+tap PLAY
+turn K3 1
+turn K3 1
+tap PLAY
+wait 4500
+expect songcount 1
+tap PLAY
+turn K3 -1
+tap ENV
+wait 20
+expect songview 1
+turn SELECT 1
+tap SEL
+wait 20
+expect songview 0
+expect songsec 1
+tap ENV
+tap ENV
+expect songview 0
+tap SAVE
+wait 20
+expect songview 2
+expect songfound 2
+tap SEL
+wait 20
+expect songview 0
+expect songsec 0
+expect songch 2
+song 3
+wait 30
+tap SAVE
+wait 20
+expect songfound 1
+tap HOME
+wait 20
+song 4
+wait 30
+tap LFO
+wait 20
+expect earq 1
+earright
+tap SEL
+wait 20
+expect earok 101
+tap SEL
+wait 20
+expect earq 2
+earwrong
+tap SEL
+wait 20
+expect earok 102
+tap HOME
+wait 20
+expect songview 0
+expect screen 11
+tap HOME
+wait 30
+song 1
+wait 30
+turn K3 -1
+tap ARP
+tap ARP
+tap PLAY
+wait 3500
+expect songplaying 2
+expect songkeys 0
+tap SEL
+tap SEL
+tap SEL
+wait 30
+expect songkeys 3
+songplay
+wait 800
+expect songplaying 1
+turn K4 -1
+wait 30
+turn K4 1
+tap PLAY
+tap ARP
+wait 30
+tap HOME
+wait 30
+tap HOME
+wait 30
+turn SELECT -1
+tap SEL
+wait 30
+turn SELECT -1
+tap SEL
+wait 30
+turn SELECT 8
+wait 30
+expect topic 9
+tap ARP
+wait 30
+expect screen 11
+tap HOME
+wait 30
+tap HOME
+wait 30
+tap HOME
+wait 30
+song 1
+wait 30
+expect songkeys 3
+tap ARP
+tap PLAY
+wait 3500
+expect songplaying 2
+songplay
+wait 800
+expect songplaying 1
+tap HOME
+wait 30
+expect songplaying 0
+song 1
+wait 30
+tap PLAY
+wait 1900
+expect songpre 0
+wait 400
+expect songpre 1
+songhold
+wait 800
+expect songch 1
+expect songplaying 1
+songlift
+tap PLAY
+tap ARP
+tap ARP
+wait 30
+expect songloop 1
+song 1
+wait 30
+tap PLAY
+wait 23500
+expect songplaying 1
+expect songsec 0
+expect songch 0
+tap PLAY
+tap SEQ
+expect songloop 2
+tap SEQ
+expect songloop 0
+tap PLAY
+wait 23500
+expect songplaying 0
+tap SEQ
+tap HOME
+wait 30

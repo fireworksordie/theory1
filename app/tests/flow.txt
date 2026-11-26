@@ -1,7 +1,7 @@
 # The quiz's flow for the README's picture (docs/make_graphics.py): a question, a wrong note, half the answer,
 # the answer right.
 wait 900
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 50
 seed 7

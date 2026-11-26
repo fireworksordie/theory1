@@ -6,14 +6,15 @@ the screen). Run it after adding a topic, a quiz type, a clef or a language:  py
 from pathlib import Path
 
 NQT, NLANGS = 12, 5
-TOPIC_ITEMS = [9, 17, 13, 9, 21, 13, 9, 15, 13]   # basics, staff, intervals, scales, modes, chords, harmony, keys, world
+TOPIC_ITEMS = [9, 17, 13, 9, 21, 13, 9, 15, 13, 13]   # basics, staff, intervals, scales, modes, chords, harmony,
+#                                                       keys, world, numerals
 HERE = Path(__file__).resolve().parent
 
 
 def basic():
     L = ["# THEORY-1 in the host simulator (app/tests/gen_tests.py): every quiz answered right scores 100, a wrong",
          "# note costs points, the lab names chords, the settings survive a reboot.",
-         "wait 900", "expect screen 0", "clefs 2", "turn SELECT 1", "tap SEL", "wait 50", "expect screen 3"]
+         "wait 900", "expect screen 0", "clefs 2", "turn SELECT 2", "tap SEL", "wait 50", "expect screen 3"]
     for lv in range(3):
         if lv:
             L += ["turn K1 1", "wait 30"]
@@ -65,13 +66,15 @@ def texts_fit():
                 else:
                     for i in range(n):
                         L += ["turn SELECT 1", "wait 20"]
-                        if t in (2, 3, 4, 5):
+                        if t in (2, 3, 4, 5, 9):
                             L += ["turn K1 5", "wait 20"]
+                        if t == 9:              # the numerals: the progression heard, its chords lit
+                            L += ["tap PLAY", "wait 700"]
                         if t == 6:
                             for r in range(17):
                                 L += ["turn K1 1", "turn K2 1", "wait 20", "turn K3 1", "wait 20", "turn K3 1"]
                 L += ["turn ALGO 1", "wait 20"]
-            L += ["tap HOME", "tap HOME", "wait 30", "turn SELECT 1", "tap SEL", "wait 30"]
+            L += ["tap HOME", "tap HOME", "wait 30", "turn SELECT 2", "tap SEL", "wait 30"]
             for qt in range(NQT):
                 for lv in range(3):
                     L += [f"seed {qt * 13 + lv * 7 + lang + names + 1}", f"quizof {qt}", "tap SEL", "wait 100", "wrong",
@@ -85,6 +88,78 @@ def texts_fit():
     return L
 
 
+def songs():
+    """SONGS: a bank loaded as over USB (tests/run_tests.sh builds it: the built-in songs' format, app/tests/songs),
+    every song opened, walked chord by chord, moved to other keys, played, waited on, in every language and two ways
+    of naming notes: nothing off the screen"""
+    L = ["# SONGS (app/tests/gen_tests.py): a bank loaded as over USB, every song walked, played and waited on, in",
+         "# every language and two ways of naming notes; no text may run off the screen.",
+         "wait 900", "expect songs 7", "expect mysongs 0", "songload app/build/test/songs.bin", "expect mysongs 1",
+         "expect songs 8", "turn SELECT 1", "tap SEL", "wait 30", "expect screen 10", "tap SEL", "wait 30",
+         "expect screen 11", "tap HOME", "wait 30", "expect screen 10", "tap HOME", "wait 30", "expect screen 0"]
+    for lang in range(NLANGS):
+        for names in (0, 3):
+            L += [f"lang {lang}", f"names {names}", "wait 30"]
+            for i in range(8):
+                L += [f"song {i}", "wait 30", "expect screen 11", "expect songsec 0"]
+                for _ in range(24):            # every chord, past the end and round again
+                    L += ["tap SEL", "wait 20"]
+                L += ["turn ALGO 1", "wait 20", "turn K1 1", "wait 20", "turn K1 5", "wait 20", "turn SELECT -3",
+                      "wait 20", "tap PLAY", "wait 1500", "turn K2 -4", "wait 1500", "tap FX", "wait 600",
+                      "tap PLAY", "wait 30", "expect songplaying 0", "tap ARP", "turn ALGO -1", "wait 20",
+                      "tap PLAY", "wait 900", "songplay", "wait 900", "tap PLAY", "tap ARP", "tap FX", "turn K2 4",
+                      # ARP's "ask me": asked, a hint, then off
+                      "tap PLAY", "wait 1500", "tap SEL", "wait 300", "tap SEL", "wait 300", "turn K4 -1", "wait 900",
+                      "turn K4 1", "tap PLAY", "tap ARP", "wait 20",
+                      # the map, the same chords elsewhere, ear training (in another key: the map gives no key)
+                      "tap ENV", "wait 20", "expect songview 1", "turn SELECT 1", "wait 20", "turn SELECT 1",
+                      "wait 20", "tap SEL", "wait 20", "expect songview 0", "tap SAVE", "wait 20",
+                      "expect songview 2", "turn SELECT 1", "wait 20", "tap HOME", "wait 20", "expect songview 0",
+                      "tap LFO", "wait 20", "expect songview 3", "turn SELECT 1", "wait 20", "tap SEL", "wait 20",
+                      "tap SEL", "wait 20", "earwrong", "tap SEL", "wait 20", "tap PLAY", "wait 20", "tap LFO",
+                      "wait 20", "expect songview 0", "turn K1 -6", "wait 20", "tap ENV", "wait 20", "tap HOME",
+                      "wait 20", "turn K3 1", "wait 20", "tap PLAY", "wait 300", "expect songcount 1", "tap PLAY",
+                      "turn K3 -1", "wait 20", "tap HOME", "wait 30"]
+            L += ["tap HOME", "wait 30"]
+    L += [  # the count-in: a bar of clicks (the first chord's shape shown), then the song; off, at once
+          "song 4", "wait 30", "tap PLAY", "wait 1500", "expect songcount 1", "expect songpre 1", "expect songch 0",
+          "wait 1100", "expect songcount 0", "expect songplaying 1", "tap PLAY", "turn K3 -1", "tap PLAY", "wait 30",
+          "expect songcount 0", "tap PLAY", "turn K3 1", "turn K3 1", "tap PLAY", "wait 4500", "expect songcount 1",
+          "tap PLAY", "turn K3 -1",
+          # the map: SEL goes to the part chosen
+          "tap ENV", "wait 20", "expect songview 1", "turn SELECT 1", "tap SEL", "wait 20", "expect songview 0",
+          "expect songsec 1", "tap ENV", "tap ENV", "expect songview 0",
+          # the same chords: the chorus's vi IV I V, in the verse (bar 3) and the chorus again (bar 5); one opened
+          "tap SAVE", "wait 20", "expect songview 2", "expect songfound 2", "tap SEL", "wait 20",
+          "expect songview 0", "expect songsec 0", "expect songch 2",
+          # the Fifties' I vi IV V: nowhere else
+          "song 3", "wait 30", "tap SAVE", "wait 20", "expect songfound 1", "tap HOME", "wait 20",
+          # ear training: right, wrong, counted; HOME back to the song
+          "song 4", "wait 30", "tap LFO", "wait 20", "expect earq 1", "earright", "tap SEL", "wait 20",
+          "expect earok 101", "tap SEL", "wait 20", "expect earq 2", "earwrong", "tap SEL", "wait 20",
+          "expect earok 102", "tap HOME", "wait 20", "expect songview 0", "expect screen 11", "tap HOME", "wait 30",
+          # ARP twice: asked for each chord, no keys lit; SEL: one more hint (the shape: its keys lit); a wrong note
+          "song 1", "wait 30", "turn K3 -1", "tap ARP", "tap ARP", "tap PLAY", "wait 3500", "expect songplaying 2",
+          "expect songkeys 0", "tap SEL", "tap SEL", "tap SEL", "wait 30", "expect songkeys 3", "songplay", "wait 800",
+          "expect songplaying 1", "turn K4 -1", "wait 30", "turn K4 1", "tap PLAY", "tap ARP", "wait 30",
+          # Roman numerals (a lesson): the four chords found in a song; ARP opens it there
+          "tap HOME", "wait 30", "tap HOME", "wait 30", "turn SELECT -1", "tap SEL", "wait 30", "turn SELECT -1",
+          "tap SEL", "wait 30", "turn SELECT 8", "wait 30", "expect topic 9", "tap ARP", "wait 30", "expect screen 11",
+          "tap HOME", "wait 30", "tap HOME", "wait 30", "tap HOME", "wait 30",
+          "song 1", "wait 30", "expect songkeys 3",  # (no count-in below)
+          "tap ARP", "tap PLAY", "wait 3500", "expect songplaying 2",
+          "songplay", "wait 800", "expect songplaying 1", "tap HOME", "wait 30", "expect songplaying 0",
+          # a beat before each chord its shape shows; held as it comes, the song does not stop for it
+          "song 1", "wait 30", "tap PLAY", "wait 1900", "expect songpre 0", "wait 400", "expect songpre 1",
+          "songhold", "wait 800", "expect songch 1", "expect songplaying 1", "songlift", "tap PLAY", "tap ARP", "tap ARP", "wait 30",
+          # the loop: the song again in time at its end (the Andalusian cadence: 8 bars at 84), the section, none
+          "expect songloop 1", "song 1", "wait 30", "tap PLAY", "wait 23500", "expect songplaying 1", "expect songsec 0",
+          "expect songch 0", "tap PLAY", "tap SEQ", "expect songloop 2", "tap SEQ", "expect songloop 0", "tap PLAY",
+          "wait 23500", "expect songplaying 0", "tap SEQ", "tap HOME", "wait 30"]
+    return L
+
+
 if __name__ == "__main__":
     (HERE / "basic.txt").write_text("\n".join(basic()) + "\n")
     (HERE / "texts_fit.txt").write_text("\n".join(texts_fit()) + "\n")
+    (HERE / "songs.txt").write_text("\n".join(songs()) + "\n")

@@ -12,5 +12,8 @@ python3 base/tools/build.py app --host
 app/build/host/theory1_host app/tests/basic.txt app/build/test
 app/build/host/theory1_host app/tests/texts_fit.txt app/build/test   # every text fits, in every language
 app/build/host/theory1_host app/tests/synth.txt app/build/test        # SYNTH: every page in every language, every goal
+python3 tools/songs/fm1_songs_test.py                              # the USB loader, against a simulated FM-1
+python3 tools/songs/t1song.py bank app/build/test/songs.bin app/tests/songs/*.t1song.json
+app/build/host/theory1_host app/tests/songs.txt app/build/test        # SONGS: loaded as over USB, walked, played
 app/build/host/theory1_host app/tests/questions.txt app/build/test   # 10800 questions made and checked
 echo "THEORY-1: all tests passed"

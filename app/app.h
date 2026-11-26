@@ -28,6 +28,10 @@ void app_frame(void);
 void app_input_only(void);
 void app_say(const char *a, const char *b);
 
+/* SONGS: a song bank from the computer (tools/songs/fm1_songs.py), in the update's framing (app/songs.c) */
+#define APP_USB_CMD
+void app_usb_cmd(const uint8_t *d, uint32_t n);
+
 /* the host simulator's checks and commands (app/tests: the scripts) */
 #define APP_HOST_EXPECT
 int app_expect(const char *what, int *got);

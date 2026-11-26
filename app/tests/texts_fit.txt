@@ -2123,10 +2123,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 1
@@ -4916,10 +4996,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 4
@@ -7709,10 +7869,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 2
@@ -10502,10 +10742,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 5
@@ -13295,10 +13615,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 3
@@ -16088,10 +16488,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 6
@@ -18881,10 +19361,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 4
@@ -21674,10 +22234,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 7
@@ -24467,10 +25107,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 5
@@ -27260,10 +27980,90 @@ turn SELECT 1
 wait 20
 turn ALGO 1
 wait 20
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn SELECT 1
+wait 20
+turn K1 5
+wait 20
+tap PLAY
+wait 700
+turn ALGO 1
+wait 20
 tap HOME
 tap HOME
 wait 30
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 30
 seed 8
