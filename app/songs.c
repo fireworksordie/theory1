@@ -181,8 +181,13 @@ static struct {
     int8_t key;                               /* -1 the song's own key, else COMMON_*_ROOTS index */
     uint8_t tempo;                            /* % of the song's */
     uint8_t melody, wait;
+    uint8_t loop;                             /* at the end: 0 stop, 1 the song again, 2 the section again */
     /* playing */
     uint8_t playing, waiting;
+    int pre;                                  /* the chord coming (its index; -1 none): its shape shown a beat early */
+    int passed;                               /* ARP: the chord already played (not waited on again) */
+    uint16_t ready;                           /* the notes played since the chord coming was shown */
+    sch_t prec;                               /* the chord coming */
     uint16_t want, got;                       /* waiting: the chord's pitch classes, those played */
     uint32_t t0, u0;                          /* at t0 the song was at unit u0 */
     int next_ch, next_nt;
@@ -190,7 +195,7 @@ static struct {
     struct { uint8_t note; uint16_t end_sec; uint32_t end; } vo[16];
     uint8_t voice[6], nvoice;                 /* the chord's hand shape (MIDI, low to high), for the keys */
     uint8_t last[6], nlast;
-} sg = {.cur = -1, .key = -1, .tempo = 100, .melody = 1};
+} sg = {.cur = -1, .key = -1, .tempo = 100, .melody = 1, .loop = 1, .pre = -1, .passed = -1};
 
 static int sg_minor(void)
 {
@@ -205,18 +210,43 @@ static nt_t sg_tonic(void)
     return ROOTS[sg_minor() ? COMMON_MINOR_ROOTS[sg.key] : COMMON_MAJOR_ROOTS[sg.key]];
 }
 
+static void sg_chord_rd(rd_t r, sch_t *c);
+static void sg_rest(sch_t *c, uint16_t from, uint16_t to)   /* no chord: a rest over from .. to */
+{
+    uint32_t z;
+    for (z = 0; z < sizeof *c; z++)
+        ((uint8_t *)c)[z] = 0;
+    c->start = from, c->len = (uint16_t)(to - from), c->fn = FN_REST;
+}
 static void sg_chord(int i, sch_t *c)
 {
     rd_t r;
-    uint32_t k, b;
     if (i < 0 || i >= sg.nch) {               /* none (a section with only a melody): a rest over all of it */
-        uint32_t z;
-        for (z = 0; z < sizeof *c; z++)
-            ((uint8_t *)c)[z] = 0;
-        c->start = sg.from, c->len = (uint16_t)(sg.to - sg.from), c->fn = FN_REST;
+        sg_rest(c, sg.from, sg.to);
         return;
     }
     r.p = sg.secp[sg.sec] + sg.choff[i], r.end = sg.end, r.bad = 0;
+    sg_chord_rd(r, c);
+}
+/* section s's first chord, without opening it (the chord coming at a section's end) */
+static void sg_first(int s, sch_t *c)
+{
+    rd_t r = {sg.secp[s], sg.end, 0};
+    uint32_t from, to, nch;
+    rd_skip(&r, rd_u8(&r));
+    rd_skip(&r, 2);
+    rd_skip(&r, rd_u8(&r));
+    rd_skip(&r, 4);
+    from = rd_u16(&r), to = rd_u16(&r), nch = rd_u16(&r);
+    rd_skip(&r, 2);
+    if (r.bad || !nch)
+        sg_rest(c, (uint16_t)from, (uint16_t)to);
+    else
+        sg_chord_rd(r, c);
+}
+static void sg_chord_rd(rd_t r, sch_t *c)
+{
+    uint32_t k, b;
     c->start = (uint16_t)rd_u16(&r);
     c->len = (uint16_t)rd_u16(&r);
     b = rd_u8(&r);
@@ -481,6 +511,7 @@ static void sg_stop(void)
 {
     sg_release(1, 0);
     sg.playing = sg.waiting = 0;
+    sg.pre = -1;
 }
 
 /* a chord heard: its shape, and its bass an octave and more below */
@@ -514,9 +545,29 @@ static void sg_play(void)
     sg.t0 = plat_ms();
     sg.next_ch = sg.ch;
     sg.next_nt = 0;
+    sg.passed = sg.ch, sg.pre = -1;
     while (sg.next_nt < sg.nnt && (uint32_t)(sg.notes[sg.next_nt * 5] | sg.notes[sg.next_nt * 5 + 1] << 8) < sg.u0)
         sg.next_nt++;
     sg.playing = 1;
+}
+
+/* the section after this one as the song plays: the next, or (at the end) as the loop says; -1 the end */
+static int sg_next_sec(void)
+{
+    if (sg.loop == 2)
+        return sg.sec;
+    if (sg.sec + 1 < sg.nsec)
+        return sg.sec + 1;
+    return sg.loop ? 0 : -1;
+}
+static uint16_t sg_held(void)                 /* the notes held on the keys, as pitch classes */
+{
+    uint16_t m = 0;
+    int i;
+    for (i = 0; i < 128; i++)
+        if (ui.held[i])
+            m |= (uint16_t)PCB(i % 12);
+    return m;
 }
 
 /* the player: called every pass of the main loop */
@@ -529,6 +580,7 @@ static void sg_tick(void)
         if ((sg.got & sg.want) != sg.want)
             return;
         sg.waiting = 0;                       /* played: on, from the chord's start */
+        sg.passed = sg.next_ch;
         sg.t0 = plat_ms();
         ui.redraw = 1;
     }
@@ -539,8 +591,11 @@ static void sg_tick(void)
         sg_chord(sg.next_ch, &c);
         if (c.start > u)
             break;
-        if (sg.wait && c.n && !sg.waiting && sg.u0 != c.start) {
-            sg.waiting = 1;                   /* ARP: the song waits here until the chord is played */
+        if (sg.wait && c.n && sg.passed != sg.next_ch &&
+            ((sg.ready | sg_held()) & sg_mask(&c)) != sg_mask(&c)) {
+            sg.waiting = 1;                   /* ARP: the song waits here until the chord is played (played or
+                                               * held as it comes, in time: it goes on) */
+            sg.pre = -1;
             sg.want = sg_mask(&c), sg.got = 0;
             sg.u0 = c.start;
             sg.ch = sg.next_ch;
@@ -549,10 +604,34 @@ static void sg_tick(void)
             ui.redraw = 1;
             return;
         }
+        sg.passed = sg.next_ch;
         sg.ch = sg.next_ch++;
+        sg.pre = -1;
         sg_release(1, 0);
         sg_sound(&c, (uint32_t)c.start + c.len);
         ui.redraw = 1;
+    }
+    if (sg.pre < 0) {                         /* a beat before the next chord: its shape, to get the hand ready */
+        sch_t n;
+        int at;
+        if (sg.next_ch < sg.nch) {
+            sg_chord(sg.next_ch, &n);
+            at = n.start;
+        } else {
+            int s = sg_next_sec();
+            if (s < 0)
+                n.n = 0;
+            else
+                sg_first(s, &n);
+            at = sg.to;                       /* (its first chord: at this section's end) */
+        }
+        if (n.n && u + UPB >= (uint32_t)at) {
+            sg.pre = sg.next_ch;
+            sg.prec = n;
+            sg.ready = 0;
+            sg_shape(&n);
+            ui.redraw = 1;
+        }
     }
     while (sg.next_nt < sg.nnt) {
         const uint8_t *p = sg.notes + sg.next_nt * 5;
@@ -564,14 +643,17 @@ static void sg_tick(void)
                     st + (ln > 1u ? ln - 1u : 1u));
         sg.next_nt++;
     }
-    if (u >= sg.to) {                         /* the section's end: the next, or the song's */
-        if (sg.sec + 1 < sg.nsec) {
-            sg_section(sg.sec + 1);
-            sg.u0 = sg.from, sg.t0 = plat_ms();
+    if (u >= sg.to) {                         /* the section's end: the next, the song or the section again */
+        int next = sg_next_sec();
+        uint32_t over = u - sg.to;            /* (in time: what the loop ran past the end, carried) */
+        if (next >= 0) {
+            sg_section(next);
+            sg.u0 = sg.from + (over < UPB ? over : 0u), sg.t0 = plat_ms();
             sg.next_ch = sg.next_nt = 0;
+            sg.passed = -1;
         } else {
             sg_stop();
-            sg.ch = 0;
+            sg_section(0);
         }
         ui.redraw = 1;
     }
@@ -583,7 +665,8 @@ static void sg_note(int note)
     if (sg.playing && sg.waiting) {
         sg.got |= (uint16_t)PCB(note % 12);
         ui.redraw = 1;
-    }
+    } else if (sg.playing && sg.pre >= 0)
+        sg.ready |= (uint16_t)PCB(note % 12);
 }
 
 /* SEL, SELECT: a chord heard (stopped) */
@@ -738,6 +821,8 @@ static void draw_song(void)
             str_cat(t, "ARP ");
         if (!sg.melody)
             str_cat(t, "-MEL ");
+        if (sg.loop)
+            str_cat(t, sg.loop == 2 ? "LOOP 1 " : "LOOP ");
         text_r(232, 136, &FONT_XS, t, COL_SCALE);
     }
     /* waiting: whose turn */
@@ -745,11 +830,21 @@ static void draw_song(void)
         sg_symbol(&c, u);
         t1_fmt(t, SG(SG_WAIT_PLAY), u, 0, 0);
         t1_tx(8, 158, &FONT_B, t, COL_HELD);
+    } else if (sg.playing && sg.pre >= 0) {   /* the chord coming: its name, its shape on the keys */
+        sg_symbol(&sg.prec, u);
+        t1_fmt(t, SG(SG_READY), u, 0, 0);
+        t1_tx(8, 158, &FONT_B, t, COL_ALT);
     }
     hint(SG(sg.playing ? SG_H_PLAY : SG_H_SONG));
     /* the keys: the hand shape, the chord's other notes */
-    mk.scale = c.n ? sg_mask(&c) : 0;
-    mk.root = c.n ? (uint16_t)PCB((c.root_semi + pc_of(tn)) % 12) : 0;
+    if (sg.playing && sg.pre >= 0 && !sg.waiting) {
+        c = sg.prec;                          /* the keys: the chord coming, in the hint's colour */
+        mk.hint = sg_mask(&c);
+        mk.scale = mk.root = 0;
+    } else {
+        mk.scale = c.n ? sg_mask(&c) : 0;
+        mk.root = c.n ? (uint16_t)PCB((c.root_semi + pc_of(tn)) % 12) : 0;
+    }
     if (sg.waiting)
         mk.ok = sg.got & sg.want;
     if (!sg.nvoice || sg.nlast != sg.nvoice)
@@ -837,6 +932,9 @@ static void sg_button(int b)
     } else if (b == B_FX) {
         sg.melody = (uint8_t)!sg.melody;
         app_say(SG(SG_SAY_MELODY), S(sg.melody ? S_ON : S_OFF));
+    } else if (b == B_SEQ) {
+        sg.loop = (uint8_t)((sg.loop + 1u) % 3u);
+        app_say(SG(SG_SAY_LOOP), sg.loop == 1 ? SG(SG_LOOP_SONG) : sg.loop == 2 ? SG(SG_LOOP_PART) : S(S_OFF));
     } else if (b == B_EDIT)
         names_next();
 }

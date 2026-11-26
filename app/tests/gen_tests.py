@@ -108,7 +108,14 @@ def songs():
                       "turn K1 -6", "wait 30", "tap HOME", "wait 30"]
             L += ["tap HOME", "wait 30"]
     L += ["song 1", "wait 30", "expect songkeys 3", "tap ARP", "tap PLAY", "wait 3500", "expect songplaying 2",
-          "songplay", "wait 800", "expect songplaying 1", "tap HOME", "wait 30", "expect songplaying 0"]
+          "songplay", "wait 800", "expect songplaying 1", "tap HOME", "wait 30", "expect songplaying 0",
+          # a beat before each chord its shape shows; held as it comes, the song does not stop for it
+          "song 1", "wait 30", "tap PLAY", "wait 1900", "expect songpre 0", "wait 400", "expect songpre 1",
+          "songhold", "wait 800", "expect songch 1", "expect songplaying 1", "songlift", "tap PLAY", "tap ARP", "wait 30",
+          # the loop: the song again in time at its end (the Andalusian cadence: 8 bars at 84), the section, none
+          "expect songloop 1", "song 1", "wait 30", "tap PLAY", "wait 23500", "expect songplaying 1", "expect songsec 0",
+          "expect songch 0", "tap PLAY", "tap SEQ", "expect songloop 2", "tap SEQ", "expect songloop 0", "tap PLAY",
+          "wait 23500", "expect songplaying 0", "tap SEQ", "tap HOME", "wait 30"]
     return L
 
 

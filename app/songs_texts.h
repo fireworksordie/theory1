@@ -4,7 +4,7 @@
 #pragma once
 enum { FN_HOME, FN_AWAY, FN_TENSION, FN_COLOR, FN_BORROWED, FN_APPLIED, FN_REST, NFN };
 enum { SG_MENU, SG_MENU_SUB, SG_H_SONG, SG_H_PLAY, SG_NEXT, SG_WAIT_PLAY, SG_SAY_WAIT, SG_SAY_MELODY, SG_SAY_TEMPO,
-       SG_SAY_KEY, SG_BAR, SG_LOADING, SG_LOADED, SG_NOT_LOADED, SG_BUILTIN, SG_MELODY_ONLY, SG_FN0, NSG = SG_FN0 + NFN };
+       SG_SAY_KEY, SG_BAR, SG_LOADING, SG_LOADED, SG_NOT_LOADED, SG_BUILTIN, SG_MELODY_ONLY, SG_READY, SG_SAY_LOOP, SG_LOOP_SONG, SG_LOOP_PART, SG_FN0, NSG = SG_FN0 + NFN };
 static const char *const SGSTR[NSG][NLANGS] = {
     [SG_MENU] = {"CANZONI", "SONGS", "CANCIONES", "LIEDER", "CHANSONS"},
     [SG_MENU_SUB] = {"gli accordi delle canzoni che conosci", "the chords of songs you know",
@@ -31,6 +31,10 @@ static const char *const SGSTR[NSG][NLANGS] = {
     [SG_MELODY_ONLY] = {"solo melodia: ascoltala con PLAY", "melody only: hear it with PLAY",
                         "solo melodía: escúchala con PLAY", "nur Melodie: hör sie mit PLAY",
                         "mélodie seule : écoute-la avec PLAY"},
+    [SG_READY] = {"Preparati: %1", "Get ready: %1", "Prepárate: %1", "Gleich: %1", "Prépare-toi : %1"},
+    [SG_SAY_LOOP] = {"RIPETI", "LOOP", "REPETIR", "SCHLEIFE", "BOUCLE"},
+    [SG_LOOP_SONG] = {"la canzone", "the song", "la canción", "das Lied", "la chanson"},
+    [SG_LOOP_PART] = {"questa parte", "this part", "esta parte", "diesen Teil", "cette partie"},
     [SG_FN0 + FN_HOME] = {"casa: qui il brano riposa", "home: where the song rests", "casa: aquí descansa la canción",
                           "Zuhause: hier ruht das Lied", "maison : ici la chanson se repose"},
     [SG_FN0 + FN_AWAY] = {"via: si allontana da casa", "away: it moves off from home", "fuera: se aleja de casa",

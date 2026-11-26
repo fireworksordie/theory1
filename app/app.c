@@ -2817,7 +2817,7 @@ static void draw_all(void)
     case SCR_SONGS: draw_songs(); btn_live |= sg_count() ? 1u << B_SEL : 0u; break;
     case SCR_SONG:
         draw_song();
-        btn_live |= 1u << B_SEL | 1u << B_PLAY | 1u << B_ARP | 1u << B_FX | 1u << B_EDIT;
+        btn_live |= 1u << B_SEL | 1u << B_PLAY | 1u << B_ARP | 1u << B_FX | 1u << B_EDIT | 1u << B_SEQ;
         break;
     default: break;
     }
@@ -2919,6 +2919,10 @@ int app_expect(const char *what, int *got)
         *got = sg.ch;
     else if (!strcmp(what, "songplaying"))
         *got = sg.playing + sg.waiting;
+    else if (!strcmp(what, "songpre"))
+        *got = sg.pre >= 0;
+    else if (!strcmp(what, "songloop"))
+        *got = sg.loop;
     else if (!strcmp(what, "songkeys"))
         *got = mk.nkeys;
     else if (!strcmp(what, "topic"))
@@ -3099,6 +3103,11 @@ int app_host_cmd(const char *cmd, const char *a, const char *b, const char *c, c
         ui_go(SCR_SONGS);
         sg.sel = (uint8_t)atoi(a);
         sg_open_sel();
+        return 1;
+    }
+    if (!strcmp(cmd, "songhold") || !strcmp(cmd, "songlift")) {   /* the hand shape shown: held down, or let go */
+        for (i = 0; i < sg.nvoice; i++)
+            note_in(sg.voice[i], cmd[4] == 'h' ? 100 : 0, cmd[4] == 'h', 0);
         return 1;
     }
     if (!strcmp(cmd, "songplay")) {           /* songplay: the waited-for chord's notes, played */
