@@ -71,7 +71,7 @@ shot 13-tonalita-bemolli.png
 tap HOME
 tap HOME
 wait 50
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 50
 shot 14-quiz-menu.png
@@ -144,7 +144,23 @@ shot 21-lab-nota.png
 key b3 up
 tap HOME
 wait 50
-turn SELECT 1
+turn SELECT 2
 tap SEL
 wait 50
 shot 22-impostazioni.png
+tap HOME
+wait 50
+turn SELECT -4
+tap SEL
+wait 50
+shot 23-canzoni.png
+song 1
+wait 50
+shot 24-canzone.png
+tap SEL
+wait 600
+shot 25-canzone-accordo.png
+tap ARP
+tap PLAY
+wait 3500
+shot 26-canzone-tocca-a-te.png

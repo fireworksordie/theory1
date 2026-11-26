@@ -1,0 +1,395 @@
+{
+ "format": "theory1-hooktheory/1",
+ "title": "Ode to Joy",
+ "artist": "Ludwig van Beethoven",
+ "source": "THEORY-1 built-in",
+ "ticksPerBeat": 480,
+ "sections": [
+  {
+   "name": "Theme",
+   "key": "D",
+   "scale": "major",
+   "bpm": 112,
+   "meter": 4,
+   "chords": [
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 0,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 1920,
+     "durationTicks": 1920
+    },
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 3840,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 5760,
+     "durationTicks": 1920
+    },
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 7680,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 9600,
+     "durationTicks": 1920
+    },
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 11520,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 13440,
+     "durationTicks": 960
+    },
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 14400,
+     "durationTicks": 960
+    }
+   ],
+   "keys": [
+    {
+     "startTick": 0,
+     "tonic": "D",
+     "scale": "major",
+     "beats": 4,
+     "beatUnit": 4
+    }
+   ],
+   "melody": [
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 0,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 480,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "4",
+     "octave": 0,
+     "startTick": 960,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "5",
+     "octave": 0,
+     "startTick": 1440,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "5",
+     "octave": 0,
+     "startTick": 1920,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "4",
+     "octave": 0,
+     "startTick": 2400,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 2880,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "2",
+     "octave": 0,
+     "startTick": 3360,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "1",
+     "octave": 0,
+     "startTick": 3840,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "1",
+     "octave": 0,
+     "startTick": 4320,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "2",
+     "octave": 0,
+     "startTick": 4800,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 5280,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 5760,
+     "durationTicks": 720,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "2",
+     "octave": 0,
+     "startTick": 6480,
+     "durationTicks": 240,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "2",
+     "octave": 0,
+     "startTick": 6720,
+     "durationTicks": 960,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 7680,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 8160,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "4",
+     "octave": 0,
+     "startTick": 8640,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "5",
+     "octave": 0,
+     "startTick": 9120,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "5",
+     "octave": 0,
+     "startTick": 9600,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "4",
+     "octave": 0,
+     "startTick": 10080,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 10560,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "2",
+     "octave": 0,
+     "startTick": 11040,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "1",
+     "octave": 0,
+     "startTick": 11520,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "1",
+     "octave": 0,
+     "startTick": 12000,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "2",
+     "octave": 0,
+     "startTick": 12480,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "3",
+     "octave": 0,
+     "startTick": 12960,
+     "durationTicks": 480,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "2",
+     "octave": 0,
+     "startTick": 13440,
+     "durationTicks": 720,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "1",
+     "octave": 0,
+     "startTick": 14160,
+     "durationTicks": 240,
+     "isRest": false,
+     "voice": 1
+    },
+    {
+     "sd": "1",
+     "octave": 0,
+     "startTick": 14400,
+     "durationTicks": 960,
+     "isRest": false,
+     "voice": 1
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 # the SYNTH section's screens for the README (docs/make_graphics.py)
 wait 600
-turn SELECT 3
+turn SELECT 4
 wait 30
 shot s0-menu.png
 tap SEL

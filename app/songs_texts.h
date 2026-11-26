@@ -1,0 +1,51 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * THEORY-1: music theory for the M-VAVE FM-1. */
+/* SONGS (songs.c): its words, in the five languages; here so the main menu can name it */
+#pragma once
+enum { FN_HOME, FN_AWAY, FN_TENSION, FN_COLOR, FN_BORROWED, FN_APPLIED, FN_REST, NFN };
+enum { SG_MENU, SG_MENU_SUB, SG_H_SONG, SG_H_PLAY, SG_NEXT, SG_WAIT_PLAY, SG_SAY_WAIT, SG_SAY_MELODY, SG_SAY_TEMPO,
+       SG_SAY_KEY, SG_BAR, SG_LOADING, SG_LOADED, SG_NOT_LOADED, SG_BUILTIN, SG_MELODY_ONLY, SG_FN0, NSG = SG_FN0 + NFN };
+static const char *const SGSTR[NSG][NLANGS] = {
+    [SG_MENU] = {"CANZONI", "SONGS", "CANCIONES", "LIEDER", "CHANSONS"},
+    [SG_MENU_SUB] = {"gli accordi delle canzoni che conosci", "the chords of songs you know",
+                     "los acordes de canciones que conoces", "die Akkorde von Liedern, die du kennst",
+                     "les accords de chansons que tu connais"},
+    [SG_H_SONG] = {"SEL AVANTI  PLAY SUONA  K1 TONO  ALG PARTE", "SEL NEXT  PLAY PLAY  K1 KEY  ALG PART",
+                   "SEL SIGUE  PLAY TOCA  K1 TONO  ALG PARTE", "SEL WEITER  PLAY SPIELEN  K1 TONART",
+                   "SEL SUITE  PLAY JOUER  K1 TON  ALG PARTIE"},
+    [SG_H_PLAY] = {"PLAY FERMA  K2 TEMPO  FX MELODIA  ARP ASPETTA", "PLAY STOP  K2 TEMPO  FX MELODY  ARP WAIT",
+                   "PLAY PARA  K2 TEMPO  FX MELODÍA  ARP ESPERA", "PLAY STOPP  K2 TEMPO  FX MELODIE  ARP WARTE",
+                   "PLAY STOP  K2 TEMPO  FX MÉLODIE  ARP ATTENDS"},
+    [SG_NEXT] = {"poi", "next", "luego", "dann", "puis"},
+    [SG_WAIT_PLAY] = {"Tocca a te: suona %1", "Your turn: play %1", "Te toca: toca %1", "Du bist dran: spiele %1",
+                      "À toi : joue %1"},
+    [SG_SAY_WAIT] = {"ASPETTAMI", "WAIT FOR ME", "ESPÉRAME", "WARTE AUF MICH", "ATTENDS-MOI"},
+    [SG_SAY_MELODY] = {"MELODIA", "MELODY", "MELODÍA", "MELODIE", "MÉLODIE"},
+    [SG_SAY_TEMPO] = {"TEMPO", "TEMPO", "TEMPO", "TEMPO", "TEMPO"},
+    [SG_SAY_KEY] = {"TONALITÀ", "KEY", "TONALIDAD", "TONART", "TONALITÉ"},
+    [SG_BAR] = {"battuta %1 di %2", "bar %1 of %2", "compás %1 de %2", "Takt %1 von %2", "mesure %1 sur %2"},
+    [SG_LOADING] = {"CARICO LE CANZONI", "LOADING SONGS", "CARGANDO CANCIONES", "LADE LIEDER", "CHARGEMENT"},
+    [SG_LOADED] = {"%1 canzoni", "%1 songs", "%1 canciones", "%1 Lieder", "%1 chansons"},
+    [SG_NOT_LOADED] = {"NON CARICATE", "NOT LOADED", "NO CARGADAS", "NICHT GELADEN", "NON CHARGÉES"},
+    [SG_BUILTIN] = {"di serie", "built in", "de serie", "eingebaut", "intégrée"},
+    [SG_MELODY_ONLY] = {"solo melodia: ascoltala con PLAY", "melody only: hear it with PLAY",
+                        "solo melodía: escúchala con PLAY", "nur Melodie: hör sie mit PLAY",
+                        "mélodie seule : écoute-la avec PLAY"},
+    [SG_FN0 + FN_HOME] = {"casa: qui il brano riposa", "home: where the song rests", "casa: aquí descansa la canción",
+                          "Zuhause: hier ruht das Lied", "maison : ici la chanson se repose"},
+    [SG_FN0 + FN_AWAY] = {"via: si allontana da casa", "away: it moves off from home", "fuera: se aleja de casa",
+                          "weg: es geht von zu Hause fort", "ailleurs : on quitte la maison"},
+    [SG_FN0 + FN_TENSION] = {"tensione: vuole tornare a casa", "tension: it pulls back home",
+                             "tensión: quiere volver a casa", "Spannung: es zieht nach Hause",
+                             "tension : elle veut rentrer"},
+    [SG_FN0 + FN_COLOR] = {"un parente stretto di casa", "a close relative of home", "un pariente cercano de casa",
+                           "ein naher Verwandter von Zuhause", "un proche parent de la maison"},
+    [SG_FN0 + FN_BORROWED] = {"preso da un'altra tonalità", "borrowed from another key", "prestado de otra tonalidad",
+                              "aus einer anderen Tonart geliehen", "emprunté à une autre tonalité"},
+    [SG_FN0 + FN_APPLIED] = {"porta all'accordo che segue", "it leads into the next chord",
+                             "lleva al acorde que sigue", "es führt zum nächsten Akkord",
+                             "il mène à l'accord suivant"},
+    [SG_FN0 + FN_REST] = {"pausa: nessun accordo", "rest: no chord", "pausa: ningún acorde", "Pause: kein Akkord",
+                          "silence : pas d'accord"},
+};
+static const char *SG(int i) { return SGSTR[i][th_ui]; }

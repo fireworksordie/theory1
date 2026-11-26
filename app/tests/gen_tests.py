@@ -13,7 +13,7 @@ HERE = Path(__file__).resolve().parent
 def basic():
     L = ["# THEORY-1 in the host simulator (app/tests/gen_tests.py): every quiz answered right scores 100, a wrong",
          "# note costs points, the lab names chords, the settings survive a reboot.",
-         "wait 900", "expect screen 0", "clefs 2", "turn SELECT 1", "tap SEL", "wait 50", "expect screen 3"]
+         "wait 900", "expect screen 0", "clefs 2", "turn SELECT 2", "tap SEL", "wait 50", "expect screen 3"]
     for lv in range(3):
         if lv:
             L += ["turn K1 1", "wait 30"]
@@ -71,7 +71,7 @@ def texts_fit():
                             for r in range(17):
                                 L += ["turn K1 1", "turn K2 1", "wait 20", "turn K3 1", "wait 20", "turn K3 1"]
                 L += ["turn ALGO 1", "wait 20"]
-            L += ["tap HOME", "tap HOME", "wait 30", "turn SELECT 1", "tap SEL", "wait 30"]
+            L += ["tap HOME", "tap HOME", "wait 30", "turn SELECT 2", "tap SEL", "wait 30"]
             for qt in range(NQT):
                 for lv in range(3):
                     L += [f"seed {qt * 13 + lv * 7 + lang + names + 1}", f"quizof {qt}", "tap SEL", "wait 100", "wrong",
@@ -85,6 +85,34 @@ def texts_fit():
     return L
 
 
+def songs():
+    """SONGS: a bank loaded as over USB (tests/run_tests.sh builds it: the built-in songs' format, app/tests/songs),
+    every song opened, walked chord by chord, moved to other keys, played, waited on, in every language and two ways
+    of naming notes: nothing off the screen"""
+    L = ["# SONGS (app/tests/gen_tests.py): a bank loaded as over USB, every song walked, played and waited on, in",
+         "# every language and two ways of naming notes; no text may run off the screen.",
+         "wait 900", "expect songs 7", "expect mysongs 0", "songload app/build/test/songs.bin", "expect mysongs 1",
+         "expect songs 8", "turn SELECT 1", "tap SEL", "wait 30", "expect screen 10", "tap SEL", "wait 30",
+         "expect screen 11", "tap HOME", "wait 30", "expect screen 10", "tap HOME", "wait 30", "expect screen 0"]
+    for lang in range(NLANGS):
+        for names in (0, 3):
+            L += [f"lang {lang}", f"names {names}", "wait 30"]
+            for i in range(8):
+                L += [f"song {i}", "wait 30", "expect screen 11", "expect songsec 0"]
+                for _ in range(24):            # every chord, past the end and round again
+                    L += ["tap SEL", "wait 20"]
+                L += ["turn ALGO 1", "wait 20", "turn K1 1", "wait 20", "turn K1 5", "wait 20", "turn SELECT -3",
+                      "wait 20", "tap PLAY", "wait 1500", "turn K2 -4", "wait 1500", "tap FX", "wait 600",
+                      "tap PLAY", "wait 30", "expect songplaying 0", "tap ARP", "turn ALGO -1", "wait 20",
+                      "tap PLAY", "wait 900", "songplay", "wait 900", "tap PLAY", "tap ARP", "tap FX", "turn K2 4",
+                      "turn K1 -6", "wait 30", "tap HOME", "wait 30"]
+            L += ["tap HOME", "wait 30"]
+    L += ["song 1", "wait 30", "expect songkeys 3", "tap ARP", "tap PLAY", "wait 3500", "expect songplaying 2",
+          "songplay", "wait 800", "expect songplaying 1", "tap HOME", "wait 30", "expect songplaying 0"]
+    return L
+
+
 if __name__ == "__main__":
     (HERE / "basic.txt").write_text("\n".join(basic()) + "\n")
     (HERE / "texts_fit.txt").write_text("\n".join(texts_fit()) + "\n")
+    (HERE / "songs.txt").write_text("\n".join(songs()) + "\n")

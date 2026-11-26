@@ -1,0 +1,269 @@
+{
+ "format": "theory1-hooktheory/1",
+ "title": "Four-chord pop",
+ "artist": "Practice progression",
+ "source": "THEORY-1 built-in",
+ "ticksPerBeat": 480,
+ "sections": [
+  {
+   "name": "Verse",
+   "key": "C",
+   "scale": "major",
+   "bpm": 100,
+   "meter": 4,
+   "chords": [
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 0,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 1920,
+     "durationTicks": 1920
+    },
+    {
+     "root": 6,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 3840,
+     "durationTicks": 1920
+    },
+    {
+     "root": 4,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 5760,
+     "durationTicks": 1920
+    },
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 7680,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 9600,
+     "durationTicks": 1920
+    },
+    {
+     "root": 6,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 11520,
+     "durationTicks": 1920
+    },
+    {
+     "root": 4,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 13440,
+     "durationTicks": 1920
+    }
+   ],
+   "keys": [
+    {
+     "startTick": 0,
+     "tonic": "C",
+     "scale": "major",
+     "beats": 4,
+     "beatUnit": 4
+    }
+   ]
+  },
+  {
+   "name": "Chorus",
+   "key": "C",
+   "scale": "major",
+   "bpm": 100,
+   "meter": 4,
+   "chords": [
+    {
+     "root": 6,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 0,
+     "durationTicks": 1920
+    },
+    {
+     "root": 4,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 1920,
+     "durationTicks": 1920
+    },
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 3840,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 5760,
+     "durationTicks": 1920
+    },
+    {
+     "root": 6,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 7680,
+     "durationTicks": 1920
+    },
+    {
+     "root": 4,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 9600,
+     "durationTicks": 1920
+    },
+    {
+     "root": 1,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 11520,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 5,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 13440,
+     "durationTicks": 1920
+    }
+   ],
+   "keys": [
+    {
+     "startTick": 0,
+     "tonic": "C",
+     "scale": "major",
+     "beats": 4,
+     "beatUnit": 4
+    }
+   ]
+  }
+ ]
+}

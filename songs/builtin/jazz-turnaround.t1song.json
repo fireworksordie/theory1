@@ -1,0 +1,181 @@
+{
+ "format": "theory1-hooktheory/1",
+ "title": "Jazz turnaround",
+ "artist": "Practice progression",
+ "source": "THEORY-1 built-in",
+ "ticksPerBeat": 480,
+ "sections": [
+  {
+   "name": "Turnaround",
+   "key": "F",
+   "scale": "major",
+   "bpm": 110,
+   "meter": 4,
+   "chords": [
+    {
+     "root": 2,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 0,
+     "durationTicks": 960
+    },
+    {
+     "root": 5,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 960,
+     "durationTicks": 960
+    },
+    {
+     "root": 1,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 1920,
+     "durationTicks": 960
+    },
+    {
+     "root": 5,
+     "type": 7,
+     "inversion": 0,
+     "applied": 2,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 2880,
+     "durationTicks": 960
+    },
+    {
+     "root": 2,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 3840,
+     "durationTicks": 960
+    },
+    {
+     "root": 5,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 4800,
+     "durationTicks": 960
+    },
+    {
+     "root": 1,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 5760,
+     "durationTicks": 960
+    },
+    {
+     "root": 5,
+     "type": 7,
+     "inversion": 0,
+     "applied": 2,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 6720,
+     "durationTicks": 960
+    },
+    {
+     "root": 2,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 7680,
+     "durationTicks": 1920
+    },
+    {
+     "root": 5,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 9600,
+     "durationTicks": 1920
+    },
+    {
+     "root": 1,
+     "type": 7,
+     "inversion": 0,
+     "applied": 0,
+     "adds": [],
+     "omits": [],
+     "alterations": [],
+     "suspensions": [],
+     "borrowed": "",
+     "isRest": false,
+     "startTick": 11520,
+     "durationTicks": 3840
+    }
+   ],
+   "keys": [
+    {
+     "startTick": 0,
+     "tonic": "F",
+     "scale": "major",
+     "beats": 4,
+     "beatUnit": 4
+    }
+   ]
+  }
+ ]
+}

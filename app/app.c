@@ -11,6 +11,7 @@
 #include "synth.h"
 #include "theory.c"
 #include "texts.c"
+#include "songs_texts.h"
 #include "synthmath.h"
 #include "synth_lessons.h"
 #include "staff_glyphs.h"
@@ -177,7 +178,8 @@ static void play_interval(int b, int semis, int together)
 
 /* ================================================================ screens === */
 enum { SCR_MENU, SCR_TOPICS, SCR_LESSON, SCR_QSETUP, SCR_QUIZ, SCR_QEND, SCR_LAB, SCR_SETTINGS, SCR_SYNLIST,
-       SCR_SYNPAGE };
+       SCR_SYNPAGE, SCR_SONGS, SCR_SONG };
+#define NMENU 6                              /* LESSONS, SONGS, QUIZ, LAB, SYNTH, SETTINGS */
 enum { T_BASICS, T_STAFF, T_INTERVALS, T_SCALES, T_MODES, T_CHORDS, T_HARMONY, T_KEYS, T_WORLD, NTOPICS };
 static const uint8_t TOPIC_ITEMS[NTOPICS] = {NBASICS, STAFF_HI - STAFF_LO + 1, NINTERVALS, NBASESCALES, NMODES, NCHORDS, 9,
                                              NKEYSIG, NWORLD};
@@ -520,6 +522,10 @@ static int32_t t1_tx(int32_t x, int32_t y, const felucca_font_t *f, const char *
 static int32_t t1_tw(const felucca_font_t *f, const char *s) { return tx_do(0, 0, f, s, 0, 0); }
 
 static void text_c(int32_t y, const felucca_font_t *f, const char *s, uint16_t c) { t1_tx((240 - t1_tw(f, s)) / 2, y, f, s, c); }
+static void text_c_at(int32_t xc, int32_t y, const char *s, uint16_t c)   /* tiny type, centred on xc */
+{
+    t1_tx(xc - t1_tw(&FONT_T, s) / 2, y, &FONT_T, s, c);
+}
 static void text_r(int32_t xr, int32_t y, const felucca_font_t *f, const char *s, uint16_t c)
 {
     t1_tx(xr - t1_tw(f, s), y, f, s, c);
@@ -617,6 +623,28 @@ static void note_box(int32_t x, int32_t y, int32_t w, int32_t h, const char *s, 
 static int32_t box_h(void) { return th_names == NAMES_BOTH ? 34 : 24; }
 
 /* the header: a title, a value on the right */
+/* a name that may be long (a song's): cut to w pixels in font f, ".." at its end */
+static void t1_fit(char *b, const felucca_font_t *f, int32_t w)
+{
+    uint32_t n;
+    if (t1_tw(f, b) <= w)
+        return;
+    for (n = 0; b[n]; n++)
+        ;
+    while (n > 1u) {
+        n--;
+        while (n > 1u && ((uint8_t)b[n] & 0xC0u) == 0x80u)   /* (a letter's whole UTF-8) */
+            n--;
+        b[n] = 0;
+        while (n > 1u && b[n - 1] == ' ')
+            b[--n] = 0;
+        b[n] = '.', b[n + 1] = '.', b[n + 2] = 0;
+        if (t1_tw(f, b) <= w)
+            return;
+        b[n] = 0;
+    }
+}
+
 static void ui_header(const char *title, const char *right, uint16_t rc)
 {
     char t[64];
@@ -665,7 +693,22 @@ static void big_list(int n, int sel, const char *(*name)(int), const char *(*sub
 /* the footer: the FM-1's 27 keys, F3 .. G5, marked by pitch class */
 static struct {
     uint16_t scale, root, ok, bad, hint;
+    uint8_t key[6], nkeys;                    /* SONGS: the exact keys of the hand shape (0 .. 26), fingered */
 } mk;
+/* the finger for the i-th of n keys of a right-hand shape, low to high (1 the thumb) */
+static int finger_of(int i, int n)
+{
+    static const uint8_t F[5][5] = {{1}, {1, 5}, {1, 3, 5}, {1, 2, 3, 5}, {1, 2, 3, 4, 5}};
+    return n >= 1 && n <= 5 && i < n ? F[n - 1][i] : 0;
+}
+static int mk_key(int k)                      /* which of the shape's keys k is: 1.., or 0 */
+{
+    int i;
+    for (i = 0; i < mk.nkeys; i++)
+        if (mk.key[i] == k)
+            return i + 1;
+    return 0;
+}
 /* in the lessons, the key of each note the example plays: it lights while it sounds (the examples sit at F3 .. G5,
  * the keys' own pitches); not in the quiz, where it would give the answer away */
 static int ex_sounding(int k)
@@ -700,11 +743,17 @@ static void ui_keyboard(void)
             c = COL_OK;
         if (mk.bad >> pc & 1u)
             c = COL_BAD;
+        if (mk.nkeys && (mk.scale >> pc & 1u) && !mk_key(k))   /* SONGS: the chord's notes elsewhere, quieter */
+            c = (mk.root >> pc & 1u) ? RGB(150, 100, 60) : RGB(90, 120, 160);
         if (ui.held[note] || ex_sounding(k))
             c = COL_HELD;
         cv_rect(i * kw, y, kw - 1, 40, c);
         if (pc == 0)                        /* the Cs, marked */
             cv_rect(i * kw + 5, y + 33, 4, 3, C_BLACK);
+        if (mk_key(k)) {                    /* the finger */
+            char f[2] = {(char)('0' + finger_of(mk_key(k) - 1, mk.nkeys)), 0};
+            text_c_at(i * kw + (kw - 1) / 2, y + 25, f, C_BLACK);
+        }
     }
     for (i = 0; i < 11; i++) {
         int k = BK[i], pc = (53 + k) % 12, note = 53 + k + 12 * ui.octave;
@@ -719,10 +768,16 @@ static void ui_keyboard(void)
             c = RGB(40, 170, 80);
         if (mk.bad >> pc & 1u)
             c = RGB(200, 50, 40);
+        if (mk.nkeys && (mk.scale >> pc & 1u) && !mk_key(k))
+            c = (mk.root >> pc & 1u) ? RGB(110, 70, 30) : RGB(40, 70, 110);
         if (ui.held[note] || ex_sounding(k))
             c = RGB(230, 190, 40);
         cv_rect(AT[i] * kw + 9, y, 11, 24, C_BLACK);
         cv_rect(AT[i] * kw + 10, y, 9, 23, c);
+        if (mk_key(k)) {
+            char f[2] = {(char)('0' + finger_of(mk_key(k) - 1, mk.nkeys)), 0};
+            text_c_at(AT[i] * kw + 14, y + 11, f, C_WHITE);
+        }
     }
 }
 
@@ -739,7 +794,12 @@ static void ui_lights(void)
         uint32_t bit = 1u << k;
         if (ui.held[note] || ex_sounding((int)k))
             bright |= bit;
-        else if (follow && ((mk.root | mk.scale | mk.ok) >> pc & 1u))
+        else if (mk.nkeys) {                  /* SONGS: the hand shape bright, the chord's other notes dim */
+            if (mk_key((int)k))
+                bright |= bit;
+            else if ((mk.ok | mk.scale) >> pc & 1u)
+                dim |= bit;
+        } else if (follow && ((mk.root | mk.scale | mk.ok) >> pc & 1u))
             mid |= bit;
         else if ((mk.root | mk.ok) >> pc & 1u)
             bright |= bit;
@@ -823,19 +883,20 @@ static int lesson_clef(void) { return ui.root[T_STAFF] % clefs_in(cfg.clefs); }
 /* =========================================================== the screens === */
 static void draw_menu(void)
 {
-    static const uint16_t COL[5] = {RGB(70, 170, 255), RGB(255, 150, 40), RGB(80, 220, 120), RGB(190, 110, 255),
-                                    RGB(170, 170, 180)};
-    const char *names[5] = {S(S_M_LESSONS), S(S_M_QUIZ), S(S_M_LAB), SSTR[SS_MENU][th_ui], S(S_M_SETTINGS)};
-    const char *subs[5] = {S(S_M_LESSONS_SUB), S(S_M_QUIZ_SUB), S(S_M_LAB_SUB), SSTR[SS_MENU_SUB][th_ui],
-                           S(S_M_SETTINGS_SUB)};
+    static const uint16_t COL[NMENU] = {RGB(70, 170, 255), RGB(255, 225, 90), RGB(255, 150, 40), RGB(80, 220, 120),
+                                        RGB(190, 110, 255), RGB(170, 170, 180)};
+    const char *names[NMENU] = {S(S_M_LESSONS), SG(SG_MENU), S(S_M_QUIZ), S(S_M_LAB), SSTR[SS_MENU][th_ui],
+                                S(S_M_SETTINGS)};
+    const char *subs[NMENU] = {S(S_M_LESSONS_SUB), SG(SG_MENU_SUB), S(S_M_QUIZ_SUB), S(S_M_LAB_SUB),
+                               SSTR[SS_MENU_SUB][th_ui], S(S_M_SETTINGS_SUB)};
     int i;
     ui_header("THEORY-1", S(S_TAGLINE), C_GRAY);
-    for (i = 0; i < 5; i++) {
-        int32_t y = 28 + i * 39, sel = i == ui.menu;
-        cv_rect(4, y, 232, 37, sel ? COL_SELBG : COL_PANEL);
-        cv_rect(4, y, 4, 37, COL[i]);
-        t1_tx(16, y + 1, &FONT_M, names[i], sel ? C_WHITE : C_GRAY);
-        t1_tx(16, y + 22, &FONT_XS, subs[i], sel ? C_HI : C_DIM);
+    for (i = 0; i < NMENU; i++) {
+        int32_t y = 28 + i * 33, sel = i == ui.menu;
+        cv_rect(4, y, 232, 32, sel ? COL_SELBG : COL_PANEL);
+        cv_rect(4, y, 4, 32, COL[i]);
+        t1_tx(16, y - 1, &FONT_M, names[i], sel ? C_WHITE : C_GRAY);
+        t1_tx(16, y + 18, &FONT_XS, subs[i], sel ? C_HI : C_DIM);
     }
     hint(S(S_H_MENU));
     mk.scale = WHITE_PCS;
@@ -2303,6 +2364,10 @@ static void harmony_all(void)
 
 /* a note in, from a key or MIDI: sounded (unless an outside keyboard sounds itself), and given to the screen */
 #include "synthlab.c"
+static void ui_go(int screen);
+static void names_next(void);
+static int t1_wrap(int v, int n);
+#include "songs.c"
 
 static void note_in(int note, int vel, int on, int outside)
 {
@@ -2323,7 +2388,8 @@ static void note_in(int note, int vel, int on, int outside)
             ui.hist[ui.nhist < 8 ? ui.nhist++ : 7] = (uint8_t)note;
         } else if (ui.screen == SCR_QUIZ) {
             q_note(note);
-        }
+        } else if (ui.screen == SCR_SONG)
+            sg_note(note);
     } else {
         if (!outside || !cfg.ext_mute)
             synth_note_off(note);
@@ -2355,6 +2421,8 @@ static void midi_in(void)
 static void ui_go(int screen)
 {
     int was = syn_is(ui.screen), now = syn_is(screen);
+    if (ui.screen == SCR_SONG && screen != SCR_SONG)
+        sg_stop();
     ui.screen = (uint8_t)screen;
     ui.redraw = 1;
     play_stop();
@@ -2373,6 +2441,7 @@ static void ui_back(void)
     case SCR_QUIZ: case SCR_QEND: ui_go(SCR_QSETUP); break;
     case SCR_SETTINGS: settings_save(); ui_go(SCR_MENU); break;
     case SCR_SYNPAGE: syn.sel = syn.ch; ui_go(SCR_SYNLIST); break;
+    case SCR_SONG: ui_go(SCR_SONGS); break;
     default: ui_go(SCR_MENU); break;
     }
 }
@@ -2381,9 +2450,13 @@ static void ui_enter(void)
 {
     switch (ui.screen) {
     case SCR_MENU:
-        ui_go(ui.menu == 0 ? SCR_TOPICS : ui.menu == 1 ? SCR_QSETUP : ui.menu == 2 ? SCR_LAB :
-              ui.menu == 3 ? SCR_SYNLIST : SCR_SETTINGS);
+        if (ui.menu == 1)
+            sg_enter_list();
+        ui_go(ui.menu == 0 ? SCR_TOPICS : ui.menu == 1 ? SCR_SONGS : ui.menu == 2 ? SCR_QSETUP :
+              ui.menu == 3 ? SCR_LAB : ui.menu == 4 ? SCR_SYNLIST : SCR_SETTINGS);
         break;
+    case SCR_SONGS: sg_open_sel(); break;
+    case SCR_SONG: sg_step(1); break;
     case SCR_SYNLIST:
         ui_go(SCR_SYNPAGE);
         syn_chapter(syn.sel);
@@ -2422,8 +2495,13 @@ static void ui_encoder(int e, int d)
     switch (ui.screen) {
     case SCR_MENU:
         if (e == EN_SELECT)
-            ui.menu = (uint8_t)t1_wrap(ui.menu + d, 5);
+            ui.menu = (uint8_t)t1_wrap(ui.menu + d, NMENU);
         break;
+    case SCR_SONGS:
+        if ((e == EN_SELECT || e == EN_ALGO) && sg_count())
+            sg.sel = (uint8_t)t1_wrap(sg.sel + d, sg_count());
+        break;
+    case SCR_SONG: sg_encoder(e, d); break;
     case SCR_SYNLIST:
         if (e == EN_SELECT || e == EN_ALGO)
             syn.sel = (uint8_t)t1_wrap(syn.sel + d, NSCHAP);
@@ -2607,6 +2685,7 @@ static void ui_button(int b)
         else if (b == B_EDIT)
             names_next();
         break;
+    case SCR_SONG: sg_button(b); break;
     default: break;
     }
     ui.redraw = 1;
@@ -2648,6 +2727,7 @@ static void ui_input(void)
         if ((e = plat_enc((int)k)) != 0)
             ui_encoder((int)k, e);
     play_tick();
+    sg_tick();
     if (pev_changed) {
         pev_changed = 0;
         if (ui.screen == SCR_LESSON || ui.screen == SCR_SYNPAGE)
@@ -2685,7 +2765,13 @@ static void speak(void)
     if (ann_on() && ann_where()) {
         char t[160];
         const int where[8] = {S_TAGLINE, S_M_LESSONS, S_M_LESSONS, S_M_QUIZ, S_M_QUIZ, S_END, S_M_LAB, S_M_SETTINGS};
-        if (syn_is(ui.screen)) {
+        if (ui.screen == SCR_SONGS || ui.screen == SCR_SONG) {
+            t1_strcpy(t, SG(SG_MENU));
+            if (ui.screen == SCR_SONG) {
+                str_cat(t, ". ");
+                str_cat(t, sg.title);
+            }
+        } else if (syn_is(ui.screen)) {
             t1_strcpy(t, SW(SS_MENU));
             if (ui.screen == SCR_SYNPAGE) {
                 str_cat(t, ". ");
@@ -2707,8 +2793,9 @@ static void speak(void)
 static void draw_all(void)
 {
     mk.scale = mk.root = mk.ok = mk.bad = mk.hint = 0;
+    mk.nkeys = 0;
     no_kb = ui.screen == SCR_MENU || ui.screen == SCR_TOPICS || ui.screen == SCR_QSETUP || ui.screen == SCR_SETTINGS ||
-            syn_is(ui.screen);
+            ui.screen == SCR_SONGS || syn_is(ui.screen);
     btn_live = 1u << B_HOME | 1u << B_GLO | (FM1B_BLE_CENTRAL ? 1u << B_REC : 0u) | 1u << B_OCTDN | 1u << B_OCTUP;
     switch (ui.screen) {
     case SCR_MENU: draw_menu(); btn_live |= 1u << B_SEL; break;
@@ -2727,6 +2814,11 @@ static void draw_all(void)
     case SCR_SETTINGS: draw_settings(); btn_live |= 1u << B_SEL | 1u << B_SAVE; break;
     case SCR_SYNLIST: draw_synlist(); btn_live |= 1u << B_SEL; break;
     case SCR_SYNPAGE: draw_synpage(); btn_live |= 1u << B_SEL | 1u << B_PLAY | 1u << B_FX; break;
+    case SCR_SONGS: draw_songs(); btn_live |= sg_count() ? 1u << B_SEL : 0u; break;
+    case SCR_SONG:
+        draw_song();
+        btn_live |= 1u << B_SEL | 1u << B_PLAY | 1u << B_ARP | 1u << B_FX | 1u << B_EDIT;
+        break;
     default: break;
     }
     if (!no_kb)
@@ -2805,6 +2897,7 @@ void app_init(void)
         cfg.ble_off = (uint8_t)(cfg.ble_off != 0);
     }
     settings_apply();
+    sg_scan();
     ui.screen = SCR_MENU;
     ui.item[T_STAFF] = (uint8_t)(2 - STAFF_LO);   /* the staff lesson starts on the second line (G4 in treble) */
 }
@@ -2816,6 +2909,18 @@ int app_expect(const char *what, int *got)
 {
     if (!strcmp(what, "screen"))
         *got = ui.screen;
+    else if (!strcmp(what, "songs"))
+        *got = sg_count();
+    else if (!strcmp(what, "mysongs"))
+        *got = (int)sg_bank[1].n;
+    else if (!strcmp(what, "songsec"))
+        *got = sg.sec;
+    else if (!strcmp(what, "songch"))
+        *got = sg.ch;
+    else if (!strcmp(what, "songplaying"))
+        *got = sg.playing + sg.waiting;
+    else if (!strcmp(what, "songkeys"))
+        *got = mk.nkeys;
     else if (!strcmp(what, "topic"))
         *got = ui.topic;
     else if (!strcmp(what, "score"))
@@ -2981,6 +3086,29 @@ int app_host_cmd(const char *cmd, const char *a, const char *b, const char *c, c
         ui.topic = ui.topic_sel = T_STAFF;
         ui.screen = SCR_LESSON;
         ui.redraw = 1;
+        return 1;
+    }
+    if (!strcmp(cmd, "songload")) {           /* songload FILE: a bank (t1song.py bank) as over USB */
+        int rc = sg_host_load(a);
+        if (rc)
+            printf("FAIL songload %s: %d\n", a, rc);
+        return 1;
+    }
+    if (!strcmp(cmd, "song")) {               /* song N: the song list's N-th, open */
+        sg_enter_list();
+        ui_go(SCR_SONGS);
+        sg.sel = (uint8_t)atoi(a);
+        sg_open_sel();
+        return 1;
+    }
+    if (!strcmp(cmd, "songplay")) {           /* songplay: the waited-for chord's notes, played */
+        sch_t c;
+        sg_chord(sg.ch, &c);
+        fake.n = fake.i = 0;
+        for (i = 0; i < sg.nvoice && fake.n < 16; i++)
+            fake.note[fake.n++] = sg.voice[i];
+        fake.next = plat_ms();
+        (void)c;
         return 1;
     }
     if (!strcmp(cmd, "clefs")) {
